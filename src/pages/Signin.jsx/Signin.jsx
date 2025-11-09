@@ -40,13 +40,13 @@ const Signin = () => {
 
                     <div><a className="link link-hover">Forgot password?</a></div>
 
-                    <button className="btn w-full border-2 md:text-[16px] mt-3 border-[#0058DD]  font-bold text-white bg-[#0058DD] h-8 md:h-10">Signin</button>
+                    <button className="btn w-full border-2 md:text-[16px] mt-3 border-[#0058DD]  font-bold text-white bg-[#0058DD] h-8 md:h-10">Login</button>
                     <div className="flex items-center">
                         <hr className="grow border-t border-gray-300" />
                         <span className="px-3 text-gray-500 text-sm">or</span>
                         <hr className="grow border-t border-gray-300" />
                     </div>
-                    <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Signup</button>
+                    <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Login with Email</button>
                 </fieldset>
             </form>
         </div>
