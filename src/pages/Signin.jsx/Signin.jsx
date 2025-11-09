@@ -2,16 +2,26 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const Signin = () => {
-    const {setUser, user, signInWithGoogle, setLoading} = useContext(AuthContext)
-    console.log(user)
+    const {setUser, signinWithEP, signInWithGoogle, setLoading} = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleEPSignin = e => {
         e.preventDefault();
         const email = e.target.email.value;
         const pass = e.target.pass.value;
-        console.log({email, pass})
+        signinWithEP(email, pass)
+        .then(res => {
+            setLoading(false)
+            setUser(res.user)
+            toast.success('Signin Successful')
+            navigate('/')
+        })
+        .catch(error => {
+            setLoading(false)
+            toast.error(error.message)
+        })
     }
 
     const handleGSignin = () => {
@@ -20,6 +30,7 @@ const Signin = () => {
             setLoading(false)
             setUser(res.user)
             toast.success('Signin Successful')
+            navigate('/')
         })
         .catch(error => {
             setLoading(false)

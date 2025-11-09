@@ -42,7 +42,7 @@ const Signup = () => {
         .then(res => {
             setLoading(false)
             setUser(res.user)
-            toast.success('Signin Successful')
+            toast.success('SignUp Successful')
             navigate('/')
         })
         .catch(error => {
