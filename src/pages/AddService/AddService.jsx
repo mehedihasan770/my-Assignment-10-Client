@@ -17,7 +17,9 @@ const AddService = () => {
         console.log({service_name, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description,})
     }
     return (
-        <div className='max-w-[700px] border mx-auto rounded-2xl p-5 mt-10 md:mt-20'>
+        <div>
+            <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A] mt-10 md:mt-20">Add Your Service</h1>
+        <div className='max-w-[700px] border mx-auto rounded-2xl p-5'>
             <form onSubmit={handleAddService}>
                 <fieldset className="fieldset">
 
@@ -50,6 +52,7 @@ const AddService = () => {
                     <button className="btn btn-neutral mt-4">Login</button>
                 </fieldset>
             </form>
+        </div>
         </div>
     );
 };
