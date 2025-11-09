@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../authContext/AuthContext';
+import toast from 'react-hot-toast';
 
 const Signin = () => {
-    const {setUser, signInWithGoogle, setLoading} = useContext(AuthContext)
+    const {setUser, user, signInWithGoogle, setLoading} = useContext(AuthContext)
+    console.log(user)
     const handleEPSignin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -16,9 +18,11 @@ const Signin = () => {
         .then(res => {
             setLoading(false)
             setUser(res.user)
+            toast.success('Signin Successful')
         })
-        .catch(err => {
-            
+        .catch(error => {
+            setLoading(false)
+            toast.error(error.message)
         })
     }
 
