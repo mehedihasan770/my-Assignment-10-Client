@@ -9,7 +9,6 @@ import { IoIosHome } from "react-icons/io";
 
 const Navbar = () => {
     const {user, signOutUser, loading} = useContext(AuthContext)
-    console.log(user?.photoURL)
     const links = <>
         <li><NavLink to={'/'}><IoHome />Home</NavLink></li>
         <li><NavLink to={'/services'}><LuBaggageClaim />Services</NavLink></li>
