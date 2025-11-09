@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
     const {signupWithEP, updateProfileUser, setUser, setLoading} = useContext(AuthContext)
@@ -10,10 +11,22 @@ const Signup = () => {
         const photoURL = e.target.photoURL.value;
         const email = e.target.email.value;
         const pass = e.target.pass.value;
-        console.log({name, email, photoURL, pass})
         signupWithEP(email, pass)
         .then(res => {
-            
+            updateProfileUser(name, photoURL)
+            .then(() => {
+                setLoading(false)
+                setUser(res.user)
+                toast.success('SignUp successful')
+            })
+            .catch(error => {
+                setLoading(false)
+                toast.error(error.message)
+            })
+        })
+        .catch(error => {
+            setLoading(false)
+            toast.error(error.message)
         })
     }
 
