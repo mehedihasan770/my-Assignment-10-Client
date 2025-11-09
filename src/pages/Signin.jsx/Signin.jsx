@@ -1,17 +1,30 @@
 import React from 'react';
+import { FcGoogle } from 'react-icons/fc';
 
 const Signin = () => {
+
+    const handleEPSignin = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const pass = e.target.pass.value;
+        console.log({email, pass})
+    }
+
+    const handleGSignin = () => {
+
+    }
+
     return (
         <div className='min-h-[calc(100vh-64px)] flex justify-center items-center'>
-            <form>
+            <form onSubmit={handleEPSignin}>
                 <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A]">Login now!</h1>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-90 border p-4">
 
                     <label className="label">Email</label>
-                    <input type="email" className="input" placeholder="Email" />
+                    <input type="email" className="input" name='email' placeholder="Email" />
 
                     <label className="label">Password</label>
-                    <input type="password" className="input" placeholder="Password" />
+                    <input type="password" className="input" name='pass' placeholder="Password" />
 
                     <div><a className="link link-hover">Forgot password?</a></div>
 
@@ -21,7 +34,7 @@ const Signin = () => {
                         <span className="px-3 text-gray-500 text-sm">or</span>
                         <hr className="grow border-t border-gray-300" />
                     </div>
-                    <button className="btn md:text-[16px] border-2 border-[#F3601A] bg-[#F3601A] text-white h-8 md:h-10">Signup</button>
+                    <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Signup</button>
                 </fieldset>
             </form>
         </div>
