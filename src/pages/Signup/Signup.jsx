@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 const Signup = () => {
     const {signupWithEP, updateProfileUser, setUser, setLoading} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleEPSignUp = e => {
         e.preventDefault()
@@ -11,6 +13,9 @@ const Signup = () => {
         const photoURL = e.target.photoURL.value;
         const email = e.target.email.value;
         const pass = e.target.pass.value;
+        if(name.length < 5) return toast.error('Name must be at least 5 characters.')
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if(!passwordRegex.test(pass))return toast.error('Password must be 6+ chars with A-Z & a-z.')
         signupWithEP(email, pass)
         .then(res => {
             updateProfileUser(name, photoURL)
@@ -18,6 +23,7 @@ const Signup = () => {
                 setLoading(false)
                 setUser(res.user)
                 toast.success('SignUp successful')
+                navigate('/')
             })
             .catch(error => {
                 setLoading(false)
