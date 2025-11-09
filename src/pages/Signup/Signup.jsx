@@ -59,16 +59,16 @@ const Signup = () => {
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-90 border p-4">
             
                         <label className="label">Name</label>
-                        <input type="text" className="input" name='name' required placeholder="Name" />
+                        <input type="text" className="input w-full" name='name' required placeholder="Name" />
 
                         <label className="label">Email</label>
-                        <input type="email" className="input" name='email' required placeholder="Email" />
+                        <input type="email" className="input w-full" name='email' required placeholder="Email" />
 
                         <label className="label">PhotoURL</label>
-                        <input type="text" className="input" name='photoURL' required placeholder="Photo URL" />
+                        <input type="text" className="input w-full" name='photoURL' required placeholder="Photo URL" />
             
                         <label className="label">Password</label>
-                        <input type="password" className="input" name='pass' required placeholder="Password" />
+                        <input type="password" className="input w-full" name='pass' required placeholder="Password" />
 
                         <button className="btn w-full border-2 md:text-[16px] mt-3 border-[#F3601A]  font-bold text-white bg-[#F3601A] h-8 md:h-10">Signup</button>
                         <div className="flex items-center">

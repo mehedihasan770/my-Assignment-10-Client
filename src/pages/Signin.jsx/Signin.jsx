@@ -46,10 +46,10 @@ const Signin = () => {
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-90 border p-4">
 
                     <label className="label">Email</label>
-                    <input type="email" className="input" name='email' placeholder="Email" />
+                    <input type="email" className="input" required name='email' placeholder="Email" />
 
                     <label className="label">Password</label>
-                    <input type="password" className="input" name='pass' placeholder="Password" />
+                    <input type="password" className="input" required name='pass' placeholder="Password" />
 
                     <div><a className="link link-hover">Forgot password?</a></div>
 
