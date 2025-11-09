@@ -7,3 +7,7 @@ li .active{
 ul li{
     @apply font-semibold md:text-[16px]
 }
+
+.tebel{
+    @apply text-[10px] md:text-[16px] whitespace-nowrap
+}
