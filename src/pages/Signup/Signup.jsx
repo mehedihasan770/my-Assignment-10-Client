@@ -13,6 +13,7 @@ const Signup = () => {
 
     return (
         <div className='min-h-[calc(100vh-64px)] flex justify-center items-center'>
+            <title>signup</title>
             <form onSubmit={handleEPSignUp}>
                     <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A]">signup now!</h1>
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-90 border p-4">
