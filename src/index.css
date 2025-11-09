@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 li .active{
-    @apply  border-b-2 md:text-[16px] border-b-[#0058DD] font-semibold text-[#0058DD]
+    @apply border-b-2 md:text-[16px] border-b-[#0058DD] font-semibold text-[#0058DD]
 }
 ul li{
     @apply font-semibold md:text-[16px]

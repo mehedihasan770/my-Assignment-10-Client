@@ -5,6 +5,8 @@ import Services from "../pages/Services/Services";
 import MyServices from "../pages/MyServices/MyServices";
 import AddService from "../pages/AddService/AddService";
 import MyBookings from "../pages/MyBookings/MyBookings";
+import Signin from "../pages/Signin.jsx/Signin";
+import Signup from "../pages/Signup/Signup";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
                 path: '/my_bookings',
                 element: <MyBookings></MyBookings>
             },
+            {
+                path: '/sign_in',
+                element: <Signin></Signin>
+            },
+            {
+                path: 'sign_up',
+                element: <Signup></Signup>
+            }
         ]
     }
 ])

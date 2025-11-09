@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
     const links = <>
@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex="-1"
-        className="z-200 menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        className="z-200 menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow">
         {links}
       </ul>
     </div>
@@ -31,8 +31,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end space-x-3">
-    <a className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">login</a>
-    <a className="btn md:text-[16px] border-2 border-[#F3601A] bg-[#F3601A] text-white w-16 h-8 md:w-32 md:h-10">Signup</a>
+    <Link to={'/sign_in'} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">Signin</Link>
+    <Link to={'/sign_up'} className="btn md:text-[16px] border-2 border-[#F3601A] bg-[#F3601A] text-white w-16 h-8 md:w-32 md:h-10">Signup</Link>
   </div>
 </div>
 </div>
