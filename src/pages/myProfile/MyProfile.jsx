@@ -27,7 +27,7 @@ const MyProfile = () => {
                 <img src={user.photoURL} alt="" className="w-24 h-24 rounded-full object-cover border-2 border-gray-200 dark:border-gray-700 shadow-sm"/>
                 <h2 className="mt-4 text-lg font-semibold">{user?.displayName}</h2>
                 <p className="text-sm">{user?.email}</p>
-                <button onClick={() => modalRef.current.showModal()} className="btn btn-outline btn-primary">Edit Profile</button>
+                <button onClick={() => modalRef.current.showModal()} className="btn btn-outline border-2 mt-3 btn-primary">Edit Profile</button>
             </div>
             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
@@ -40,12 +40,12 @@ const MyProfile = () => {
                         <label className="label">PhotoURL</label>
                         <input type="text" className="input w-full" defaultValue={user?.photoURL} name='photoURL' required placeholder="Photo URL" />
 
-                        <button className="btn w-full border-2 md:text-[16px] mt-3 border-[#F3601A]  font-bold text-white bg-[#F3601A] h-8 md:h-10">Click to confirm Edit</button>
+                        <button className="btn border-2 mt-3 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Click to confirm Edit</button>
                     </fieldset>
                     </form>
                 <div className="modal-action">
-                <form method="dialog">
-                    <button className="btn">Cancel</button>
+                <form method="dialog" className='w-full'>
+                    <button className="btn w-full">Cancel</button>
                 </form>
             </div>
   </div>

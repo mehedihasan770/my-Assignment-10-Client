@@ -52,6 +52,19 @@ const MyServices = () => {
         })
         modalRef.current.close()
     }
+
+    const handleDeleteServices = id => {
+        console.log(id)
+        fetch(`http://localhost:3000/services/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setShouldFetch(false)
+        })
+    }
+
     return (
         <div>
             <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A] mt-10 md:mt-20">My Service</h1>
@@ -82,7 +95,10 @@ const MyServices = () => {
           <button onClick={() => handleFindEditServices(services._id)} className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]"><FaEdit />Edit</button>
         </td>
         <td>
-          <button className="btn border-2 border-[#FF0000] text-[#FF0000] font-bold hover:text-white hover:bg-[#FF0000]"><RiDeleteBin5Fill />Delete</button>
+          <button onClick={() => {
+            handleDeleteServices(services._id)
+            setShouldFetch(true)
+          }} className="btn border-2 border-[#FF0000] text-[#FF0000] font-bold hover:text-white hover:bg-[#FF0000]"><RiDeleteBin5Fill />Delete</button>
         </td>
       </tr>)}
     </tbody>
