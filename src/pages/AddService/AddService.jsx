@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
+import toast from 'react-hot-toast';
 
 const AddService = () => {
     const {user} = useContext(AuthContext)
@@ -14,7 +15,21 @@ const AddService = () => {
         const provider_email = user?.email;
         const contact_email = e.target.contact_email.value;
         const service_description = e.target.description.value;
-        console.log({service_name, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description,})
+        const newService = {service_name, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description}
+        fetch('http://localhost:3000/services', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newService)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                toast.success('Service Added Successful')
+                e.target.reset();
+            }
+        })
     }
     return (
         <div>
@@ -49,7 +64,7 @@ const AddService = () => {
                     <label className="label">Description</label>
                     <textarea name="description" required placeholder="Enter product description" rows="4" className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400 outline-none"></textarea>
 
-                    <button className="btn btn-neutral mt-4">Login</button>
+                    <button className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] mt-4">Click To Add Service</button>
                 </fieldset>
             </form>
         </div>
