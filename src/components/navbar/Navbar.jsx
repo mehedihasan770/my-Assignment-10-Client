@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../authContext/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext)
+    const {user, signOutUser, loading} = useContext(AuthContext)
+    console.log(user?.photoURL)
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/services'}>Services</NavLink></li>
@@ -11,6 +13,16 @@ const Navbar = () => {
         <li><NavLink to={'/add_services'}>Add Service</NavLink></li>
         <li><NavLink to={'/my_bookings'}>My Bookings</NavLink></li>
     </>
+
+    const handleSignoutUser = () => {
+      signOutUser()
+      .then(() => {
+          toast.success('Signout Successful')
+      })
+      .catch(error => {
+          toast.error(error.message)
+      })
+    }
 
     return (
 <div className='bg-base-100 shadow-sm'>
@@ -34,7 +46,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    { user ? <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" /> :
+    { loading ? <h1>Loading...</h1> : user ? <div className="flex justify-center items-center space-x-3"><img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" /> <button onClick={handleSignoutUser} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-20 md:h-10">Signout</button></div> :
     <div className="space-x-3">
       <Link to={'/sign_in'} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">Signin</Link>
       <Link to={'/sign_up'} className="btn md:text-[16px] border-2 border-[#F3601A] bg-[#F3601A] text-white w-16 h-8 md:w-32 md:h-10">Signup</Link>
