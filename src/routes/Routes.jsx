@@ -7,6 +7,7 @@ import AddService from "../pages/AddService/AddService";
 import MyBookings from "../pages/MyBookings/MyBookings";
 import Signin from "../pages/Signin.jsx/Signin";
 import Signup from "../pages/Signup/Signup";
+import PrivetRouts from "../privetRouts/PrivetRouts";
 
 export const router = createBrowserRouter([
     {
@@ -23,15 +24,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/my_services',
-                element: <MyServices></MyServices>
+                element: <PrivetRouts><MyServices></MyServices></PrivetRouts>
             },
             {
                 path: '/add_services',
-                element: <AddService></AddService>
+                element: <PrivetRouts><AddService></AddService></PrivetRouts>
             },
             {
                 path: '/my_bookings',
-                element: <MyBookings></MyBookings>
+                element: <PrivetRouts><MyBookings></MyBookings></PrivetRouts>
             },
             {
                 path: '/sign_in',
