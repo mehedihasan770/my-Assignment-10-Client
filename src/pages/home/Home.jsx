@@ -1,9 +1,11 @@
-import React from 'react';
+import CarouselSlider from '../../components/carouselSlider/CarouselSlider';
 
 const Home = () => {
     return (
-        <div>
-            Home
+        <div className='md:mt-10 mt-5'>
+            <header>
+                <CarouselSlider></CarouselSlider>
+            </header>
         </div>
     );
 };
