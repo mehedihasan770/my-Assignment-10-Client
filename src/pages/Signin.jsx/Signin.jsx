@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const Signin = () => {
     const {setUser, signinWithEP, signInWithGoogle, setLoading} = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
     const handleEPSignin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -16,7 +17,7 @@ const Signin = () => {
             setLoading(false)
             setUser(res.user)
             toast.success('Signin Successful')
-            navigate('/')
+            navigate(location.state || '/')
         })
         .catch(error => {
             setLoading(false)
@@ -30,7 +31,7 @@ const Signin = () => {
             setLoading(false)
             setUser(res.user)
             toast.success('Signin Successful')
-            navigate('/')
+            navigate(location.state || '/')
         })
         .catch(error => {
             setLoading(false)

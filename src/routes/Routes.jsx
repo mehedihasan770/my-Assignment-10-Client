@@ -8,6 +8,7 @@ import MyBookings from "../pages/MyBookings/MyBookings";
 import Signin from "../pages/Signin.jsx/Signin";
 import Signup from "../pages/Signup/Signup";
 import PrivetRouts from "../privetRouts/PrivetRouts";
+import MyProfile from "../pages/myProfile/MyProfile";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: '/my_bookings',
                 element: <PrivetRouts><MyBookings></MyBookings></PrivetRouts>
+            },
+            {
+                path: '/my_profile',
+                element: <PrivetRouts><MyProfile></MyProfile></PrivetRouts>
             },
             {
                 path: '/sign_in',
