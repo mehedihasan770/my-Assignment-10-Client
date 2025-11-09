@@ -16,7 +16,7 @@ const CarouselSlider = () => {
         <Link to={'/services'}><button className="text-[#0058DD] cursor-pointer lg:mt-3 md:text-[16px] md:top-0 text-[8px]">explore more...</button></Link> 
     </div>
     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-20">
-      <a href="#slide4" className="btn w-5 h-5 btn-circle">❮</a>
+      <a href="#slide4" className="btn btn-circle">❮</a>
       <a href="#slide2" className="btn btn-circle">❯</a>
     </div>
   </div>
