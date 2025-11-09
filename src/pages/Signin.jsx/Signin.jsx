@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../../authContext/AuthContext';
 
 const Signin = () => {
-
+    const {setUser, signInWithGoogle, setLoading} = useContext(AuthContext)
     const handleEPSignin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -11,7 +12,14 @@ const Signin = () => {
     }
 
     const handleGSignin = () => {
-
+        signInWithGoogle()
+        .then(res => {
+            setLoading(false)
+            setUser(res.user)
+        })
+        .catch(err => {
+            
+        })
     }
 
     return (
