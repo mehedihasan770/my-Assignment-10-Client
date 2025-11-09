@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../authContext/AuthContext';
 
 const Signup = () => {
+    const {signupWithEP, updateProfileUser, setUser, setLoading} = useContext(AuthContext)
 
     const handleEPSignUp = e => {
         e.preventDefault()
@@ -9,6 +11,10 @@ const Signup = () => {
         const email = e.target.email.value;
         const pass = e.target.pass.value;
         console.log({name, email, photoURL, pass})
+        signupWithEP(email, pass)
+        .then(res => {
+            
+        })
     }
 
     return (
