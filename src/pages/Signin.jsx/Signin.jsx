@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router';
 
 const Signin = () => {
     const {setUser, user, signInWithGoogle, setLoading} = useContext(AuthContext)
@@ -47,6 +48,10 @@ const Signin = () => {
                         <hr className="grow border-t border-gray-300" />
                     </div>
                     <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Login with Email</button>
+                    <h2 className="font-semibold pt-3">
+                        Dont't Have An Account ?{" "}
+                        <Link className="text-secondary" to={"/sign_up"}>Signup</Link>
+                    </h2>
                 </fieldset>
             </form>
         </div>

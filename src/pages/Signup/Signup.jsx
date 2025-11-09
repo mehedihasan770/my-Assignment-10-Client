@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
 
 const Signup = () => {
@@ -55,7 +55,7 @@ const Signup = () => {
         <div className='min-h-[calc(100vh-64px)] flex justify-center items-center'>
             <title>signup</title>
             <form onSubmit={handleEPSignUp}>
-                    <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A]">signup now!</h1>
+                    <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A]">Signup now!</h1>
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-90 border p-4">
             
                         <label className="label">Name</label>
@@ -77,6 +77,10 @@ const Signup = () => {
                             <hr className="grow border-t border-gray-300" />
                         </div>
                         <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Signup with Email</button>
+                        <h2 className="font-semibold pt-3">
+                            Already Have An Account ?{" "}
+                            <Link className="text-secondary" to={"/sign_in"}>Login</Link>
+                        </h2>
                     </fieldset>
                 </form>
         </div>
