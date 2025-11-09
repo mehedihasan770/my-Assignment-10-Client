@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
+import { FcGoogle } from 'react-icons/fc';
 
 const Signup = () => {
-    const {signupWithEP, updateProfileUser, setUser, setLoading} = useContext(AuthContext)
+    const {signupWithEP, updateProfileUser, signInWithGoogle, setUser, setLoading} = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleEPSignUp = e => {
@@ -36,6 +37,20 @@ const Signup = () => {
         })
     }
 
+    const handleGSignin = () => {
+        signInWithGoogle()
+        .then(res => {
+            setLoading(false)
+            setUser(res.user)
+            toast.success('Signin Successful')
+            navigate('/')
+        })
+        .catch(error => {
+            setLoading(false)
+            toast.error(error.message)
+        })
+    }
+
     return (
         <div className='min-h-[calc(100vh-64px)] flex justify-center items-center'>
             <title>signup</title>
@@ -56,6 +71,12 @@ const Signup = () => {
                         <input type="password" className="input" name='pass' required placeholder="Password" />
 
                         <button className="btn w-full border-2 md:text-[16px] mt-3 border-[#F3601A]  font-bold text-white bg-[#F3601A] h-8 md:h-10">Signup</button>
+                        <div className="flex items-center">
+                            <hr className="grow border-t border-gray-300" />
+                            <span className="px-3 text-gray-500 text-sm">or</span>
+                            <hr className="grow border-t border-gray-300" />
+                        </div>
+                        <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Signup with Email</button>
                     </fieldset>
                 </form>
         </div>
