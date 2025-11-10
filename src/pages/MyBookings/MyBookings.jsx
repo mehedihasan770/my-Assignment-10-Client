@@ -76,7 +76,7 @@ const MyBookings = () => {
     }
 
     return (
-        <div>
+        <div className='mt-5'>
             <div className='overflow-x-auto'> 
                 <table className="table w-full min-w-[600px]">
                     <thead>
@@ -101,13 +101,13 @@ const MyBookings = () => {
                         <td className="tebel"><p className='bg-[#0058DD] w-fit py-1 px-2.5 text-white font-bold rounded-2xl'>{bookData.price}</p></td>
                         <td className="tebel font-semibold">{bookData.date}</td>
                         <td>
-                        <button onClick={() => handleModalOn(bookData.services_id)} className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Add Review</button>
+                        <button onClick={() => handleModalOn(bookData.services_id)} className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Review</button>
                         </td>
                         <td>
                           <button onClick={() => {
                             handleDeleteBooking(bookData._id)
                             setShouldFetch(true)
-                          }} className="btn border-2 border-[#FF0000] text-[#FF0000] font-bold hover:text-white hover:bg-[#FF0000]"><RiDeleteBin5Fill />Book Cancel</button>
+                          }} className="btn border-2 border-[#FF0000] text-[#FF0000] font-bold hover:text-white hover:bg-[#FF0000]"><RiDeleteBin5Fill />Cancel</button>
                         </td>
                       </tr>
                       )}

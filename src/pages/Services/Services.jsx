@@ -11,8 +11,7 @@ const Services = () => {
         })
     }, [])
     return (
-        <div>
-            <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-10 md:mt-20">All Service</h1>
+        <div className='mt-5'>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 { service.map( ser => 
                 <div key={ser._id} className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">

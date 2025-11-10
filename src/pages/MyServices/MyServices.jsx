@@ -53,6 +53,7 @@ const MyServices = () => {
                     icon: "success",
                     draggable: true
                 });
+                e.target.reset()
             }
         })
         modalRef.current.close()
@@ -89,8 +90,7 @@ const MyServices = () => {
     }
 
     return (
-        <div>
-            <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-10 md:mt-20">My Service</h1>
+        <div className='mt-5'>
             <div className="overflow-x-auto">
   <table className="table w-full min-w-[600px]">
     <thead>

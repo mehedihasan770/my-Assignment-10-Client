@@ -1,11 +1,57 @@
+import { useEffect, useState } from 'react';
 import CarouselSlider from '../../components/carouselSlider/CarouselSlider';
+import { Link } from 'react-router';
+import { FcRating } from 'react-icons/fc';
 
 const Home = () => {
+    const [topServices, setTopServices] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/average_top_rating')
+        .then(res => res.json())
+        .then(data => {
+            setTopServices(data)
+        })
+    })
+
     return (
         <div className='md:mt-10 mt-5'>
             <header>
                 <CarouselSlider></CarouselSlider>
             </header>
+            <div className='border-t mt-3 mb-3 border-gray-400'></div>
+            <h1 className='text-center text-3xl font-bold'>top six-rated services</h1>
+            <main>
+                <div className='mt-5'>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
+                { topServices.map( ser => 
+                <div key={ser._id} className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
+                    <div className="relative">
+                        <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl max-h-60 object-cover hover:scale-105 transition-transform duration-400"/>
+                        <div className='flex space-x-1 absolute top-3 left-3'>
+                            <span className=" text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md">${ser.service_Price}</span>
+                            <div className='flex space-x-1 items-center text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md'>
+                                <FcRating size={20}/>
+                                <span className="">{ser?.avaregRating?.toFixed(2)}</span>
+                            </div>
+                        </div>
+                    </div>
+            <div className="p-5">
+                <h2 className="text-xl font-semibold dark:text-gray-100 mb-3">{ser.service_name}</h2>
+            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-300">
+            <div>
+                <p className="font-medium dark:text-gray-200">{ser.provider_name}</p>
+                <p className="text-xs">{ser.service_category}</p>
+            </div>
+                <span className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{ser.contact_email}</span>
+            </div>
+            <Link to={`/details/${ser._id}`}><button className="cursor-pointer mt-4 w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 dark:hover:bg-blue-600 transition duration-200 font-medium shadow-md">View Details</button></Link>
+      </div>
+    </div>
+)}
+            </div>
+                </div>
+            </main>
         </div>
     );
 };

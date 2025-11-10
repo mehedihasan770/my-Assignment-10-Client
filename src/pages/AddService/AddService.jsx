@@ -39,8 +39,7 @@ const AddService = () => {
         })
     }
     return (
-        <div>
-            <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-10 md:mt-20">Add Your Service</h1>
+        <div className='mt-10'>
         <div className='max-w-[700px] border mx-auto rounded-2xl p-5'>
             <form onSubmit={handleAddService}>
                 <fieldset className="fieldset">
