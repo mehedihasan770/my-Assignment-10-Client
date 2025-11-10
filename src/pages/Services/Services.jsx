@@ -29,7 +29,7 @@ const Services = () => {
             </div>
                 <span className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{ser.contact_email}</span>
             </div>
-            <Link><button className="cursor-pointer mt-4 w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 dark:hover:bg-blue-600 transition duration-200 font-medium shadow-md">View Details</button></Link>
+            <Link to={`/details/${ser._id}`}><button className="cursor-pointer mt-4 w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 dark:hover:bg-blue-600 transition duration-200 font-medium shadow-md">View Details</button></Link>
       </div>
     </div>
 )}
