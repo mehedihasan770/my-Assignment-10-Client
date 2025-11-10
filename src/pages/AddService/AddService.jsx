@@ -14,9 +14,10 @@ const AddService = () => {
         const service_imageURL = e.target.service_imageURL.value;
         const provider_name = e.target.provider_name.value;
         const provider_email = user?.email;
+        const reviews = [];
         const contact_email = e.target.contact_email.value;
         const service_description = e.target.description.value;
-        const newService = {service_name, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description}
+        const newService = {service_name, reviews, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description}
         fetch('http://localhost:3000/services', {
             method: 'POST',
             headers: {

@@ -22,8 +22,10 @@ const Details = () => {
         const email = e.target.email.value;
         const date = e.target.date.value;
         const price = e.target.price.value;
+        const name = details.service_name;
+        const photo = details.service_imageURL;
         const services_id = details._id;
-        const newBooking = {email, date, price, services_id}
+        const newBooking = {email, date, name, price, photo, services_id}
         fetch('http://localhost:3000/bookings', {
             method: 'POST',
             headers: {
