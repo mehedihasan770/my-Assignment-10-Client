@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const AddService = () => {
     const {user} = useContext(AuthContext)
@@ -26,6 +27,11 @@ const AddService = () => {
         .then(res => res.json())
         .then(data => {
             if(data.insertedId){
+                Swal.fire({
+                    title: "Services Added Successful",
+                    icon: "success",
+                    draggable: true
+                });
                 toast.success('Service Added Successful')
                 e.target.reset();
             }
@@ -33,7 +39,7 @@ const AddService = () => {
     }
     return (
         <div>
-            <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A] mt-10 md:mt-20">Add Your Service</h1>
+            <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-10 md:mt-20">Add Your Service</h1>
         <div className='max-w-[700px] border mx-auto rounded-2xl p-5'>
             <form onSubmit={handleAddService}>
                 <fieldset className="fieldset">

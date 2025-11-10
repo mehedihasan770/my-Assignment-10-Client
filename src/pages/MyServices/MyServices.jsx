@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AuthContext } from '../../authContext/AuthContext';
-import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const MyServices = () => {
     const {user} = useContext(AuthContext)
@@ -46,28 +46,51 @@ const MyServices = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            setShouldFetch(false)
-            toast.success('Service Edit Successful')
+            if(data.matchedCount){
+                setShouldFetch(false)
+                Swal.fire({
+                    title: "Update Successful",
+                    icon: "success",
+                    draggable: true
+                });
+            }
         })
         modalRef.current.close()
     }
 
     const handleDeleteServices = id => {
-        console.log(id)
-        fetch(`http://localhost:3000/services/${id}`, {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+        .then((result) => {
+        if (result.isConfirmed) {
+            fetch(`http://localhost:3000/services/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            setShouldFetch(false)
+            if(data.deletedCount){
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your Service has been deleted.",
+                    icon: "success"
+                });
+                setShouldFetch(false)
+            }
         })
+        }
+    });
     }
 
     return (
         <div>
-            <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A] mt-10 md:mt-20">My Service</h1>
+            <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-10 md:mt-20">My Service</h1>
             <div className="overflow-x-auto">
   <table className="table w-full min-w-[600px]">
     <thead>
@@ -139,8 +162,8 @@ const MyServices = () => {
                 </fieldset>
                 </form>
                 <div className="modal-action">
-                    <form method="dialog">
-                        <button className="btn">Cancel</button>
+                    <form method="dialog" className='w-full'>
+                        <button className="btn w-full">Cancel</button>
                     </form>
                 </div>
             </div>
