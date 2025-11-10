@@ -2,6 +2,7 @@ import  { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { AuthContext } from '../../authContext/AuthContext';
 import Swal from 'sweetalert2';
+import { FcRating } from 'react-icons/fc';
 
 const Details = () => {
     const {user} = useContext(AuthContext)
@@ -21,7 +22,7 @@ const Details = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const date = e.target.date.value;
-        const price = e.target.price.value;
+        const price = parseInt(e.target.price.value);
         const name = details.service_name;
         const photo = details.service_imageURL;
         const services_id = details._id;
@@ -48,8 +49,7 @@ const Details = () => {
     }
 
     return (
-        <div>
-            <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-5 md:mt-10">Service details</h1>
+        <div className='mt-5'>
             <div className='flex lg:flex-row rounded-2xl p-5 space-x-4 flex-col shadow-sm'>
                 <div className='flex-1'>
                     <img src={details?.service_imageURL} alt="" className='w-2xl md:h-[600px] border border-gray-400 rounded-2xl' />
@@ -57,7 +57,7 @@ const Details = () => {
                 <div className='flex-1'>
                     <h1 className='text-2xl font-bold border border-[#0058DD] w-fit px-2 py-1 rounded-2xl mt-2'>{details?.service_name}</h1>
                     <div className='border-t mt-3 mb-3 border-gray-400'></div>
-                    <h1 className='bg-[#0058DD] w-fit py-1 px-2.5 text-white font-bold rounded-2xl'>price ${details?.service_Price}</h1>
+                    <h1 className='bg-[#0058DD] w-fit py-1 px-2.5 text-white font-bold rounded-md'>price ${details?.service_Price}</h1>
                     <h1 className='font-semibold text-gray-600'>{details?.service_category}</h1>
                     <h1 className='font-semibold text-gray-600'>{details?.provider_name}</h1>
                     <h1 className='font-semibold text-gray-600'>{details?.contact_email}</h1>
@@ -66,6 +66,21 @@ const Details = () => {
                     <div className='border-t mt-3 mb-3 border-gray-400'></div>
                     { user?.email === details?.provider_email ? <p className='bg-[#0058DD] font-semibold py-2 rounded-2xl text-left text-white px-3 w-fit'>You built this service. So, you won’t be able to book.</p> : <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Book now</button>}
                 </div>
+            </div>
+             <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-5 md:mt-10">All Rating</h1>
+             {details?.reviews?.length <=0 ? <h1 className='md:text-4xl text-center font-bold text-gray-400 mt-10'>No Rating</h1> : ""}
+            <div className='grid md:grid-cols-2 grid-cols-1 gap-5'>
+                {
+                    details?.reviews?.map((review, index) => 
+                        <div key={index} className='border border-gray-300 rounded-md shadow-lg p-5'>
+                            <div className='flex items-center space-x-1 mb-2'>
+                                <FcRating size={25}/>
+                                <h1 className='font-bold'>{review.rating}</h1>
+                            </div>
+                            <h1 className='text-gray-500'>{review.comment}</h1>
+                        </div>
+                    )
+                }
             </div>
             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">

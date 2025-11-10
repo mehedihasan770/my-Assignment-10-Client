@@ -30,7 +30,7 @@ const MyServices = () => {
         e.preventDefault();
         const service_name = e.target.service_name.value;
         const service_category = e.target.service_category.value;
-        const service_Price = e.target.service_Price.value;
+        const service_Price = parseInt(e.target.service_Price.value);
         const service_imageURL = e.target.service_imageURL.value;
         const provider_name = e.target.provider_name.value;
         const provider_email = user?.email;

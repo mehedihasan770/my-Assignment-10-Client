@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AuthContext } from '../../authContext/AuthContext';
 import { FaStreetView } from 'react-icons/fa';
@@ -7,7 +7,9 @@ import Swal from 'sweetalert2';
 const MyBookings = () => {
     const {user} = useContext(AuthContext)
     const [myBooking, setMyBooking] = useState([])
+    const [serId, setSerId] = useState('')
     const [shouldFetch, setShouldFetch] = useState(false);
+    const modalRef = useRef()
     useEffect(() => {
         if(user){
             fetch(`http://localhost:3000/bookings?email=${user?.email}`)
@@ -46,7 +48,32 @@ const MyBookings = () => {
             })
             }
         });
-        }
+    }
+
+    const handleModalOn = id => {
+        modalRef.current.showModal()
+        setSerId(id)
+    }
+
+    const handleAddReviews = e => {
+        e.preventDefault();
+        const email = user.email
+        const rating = parseInt(e.target.rating.value)
+        const comment = e.target.comment.value;
+        const newRating = {comment, rating, email}
+        fetch(`http://localhost:3000/services/${serId}/review`, {
+            method: 'PUT',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newRating)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        modalRef.current.close()
+    }
 
     return (
         <div>
@@ -74,7 +101,7 @@ const MyBookings = () => {
                         <td className="tebel"><p className='bg-[#0058DD] w-fit py-1 px-2.5 text-white font-bold rounded-2xl'>{bookData.price}</p></td>
                         <td className="tebel font-semibold">{bookData.date}</td>
                         <td>
-                        <button className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Add Review</button>
+                        <button onClick={() => handleModalOn(bookData.services_id)} className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Add Review</button>
                         </td>
                         <td>
                           <button onClick={() => {
@@ -87,6 +114,39 @@ const MyBookings = () => {
                     </tbody>
                   </table>
             </div>
+            <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+            <div className="modal-box">
+                <form onSubmit={handleAddReviews}>
+                    <fieldset className="fieldset">
+                       
+                        <label className="font-bold">Rating (1/5)</label>
+                        <input
+                            type="number"
+                            name="rating"
+                            min="1"
+                            max="5"
+                            required
+                            className="input input-bordered w-full mb-2"
+                        />
+
+                        <label className="font-bold">Comment</label>
+                        <textarea
+                            name="comment"
+                            placeholder="Write your review...."
+                            required
+                            className="textarea textarea-bordered w-full mb-2"
+                        />
+
+                    <button onClick={() => setShouldFetch(true)} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] mt-4">Post review</button>
+                </fieldset>
+                </form>
+                <div className="modal-action">
+                    <form method="dialog" className='w-full'>
+                        <button className="btn w-full">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
         </div>
     );
 };
