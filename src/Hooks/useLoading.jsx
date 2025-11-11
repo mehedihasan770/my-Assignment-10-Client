@@ -5,7 +5,7 @@ export const useLoading = () => {
     const [loading1, setLoading1] = useState(true)
     const location = useLocation()
     useEffect(() => {
-        fetch('http://localhost:3000/services')
+        fetch('https://home-hero-server-ten.vercel.app/services')
         .then(res => res.json())
         .then(() => {
             setTimeout(() => {

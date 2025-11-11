@@ -17,7 +17,7 @@ const PageNotFound = () => {
                     <p className='text-gray-500'>The page you are looking for is not available.</p>
                 </div>
                 <div className="w-fit mx-auto">
-                    <Link to={'/'}><button className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Go Back!</button></Link>
+                    <Link to={'/'}><button className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Back To Home!</button></Link>
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@ const AddService = () => {
         const contact_email = e.target.contact_email.value;
         const service_description = e.target.description.value;
         const newService = {service_name, reviews, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description}
-        fetch('http://localhost:3000/services', {
+        fetch('https://home-hero-server-ten.vercel.app/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

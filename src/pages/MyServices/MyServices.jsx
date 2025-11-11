@@ -15,7 +15,7 @@ const MyServices = () => {
     const {loading1} = useLoading()
     useEffect(() => {
         if(user){
-            fetch(`http://localhost:3000/services?email=${user?.email}`)
+            fetch(`https://home-hero-server-ten.vercel.app/services?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyServices(data)
@@ -40,7 +40,7 @@ const MyServices = () => {
         const contact_email = e.target.contact_email.value;
         const service_description = e.target.description.value;
         const newService = {service_name, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description}
-        fetch(`http://localhost:3000/services/${singleServices1?._id}`, {
+        fetch(`https://home-hero-server-ten.vercel.app/services/${singleServices1?._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const MyServices = () => {
         })
         .then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:3000/services/${id}`, {
+            fetch(`https://home-hero-server-ten.vercel.app/services/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

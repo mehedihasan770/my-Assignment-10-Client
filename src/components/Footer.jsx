@@ -43,7 +43,7 @@ const Footer = () => {
             </div>
             <div className='border-t-2 border-gray-300 mt-5'>
                 <div className='mt-4 text-gray-400 flex justify-between lg:flex-row flex-col-reverse'>
-                    <h1>© 2025 WarmPaws. All rights reserved.</h1>
+                    <h1>© 2025 Home Hero. All rights reserved.</h1>
                     <div>
                         <a className='underline mr-4' href="">Privacy Policy</a>
                         <a className='underline' href="">Terms of Service</a>

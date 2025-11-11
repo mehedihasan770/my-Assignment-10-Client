@@ -13,7 +13,7 @@ const Details = () => {
     const modalRef = useRef()
     const {loading1} = useLoading()
     useEffect(() => {
-        fetch(`http://localhost:3000/services/${id}`)
+        fetch(`https://home-hero-server-ten.vercel.app/services/${id}`)
         .then(res => res.json())
         .then(data => {
             setDetails(data)
@@ -29,7 +29,7 @@ const Details = () => {
         const photo = details.service_imageURL;
         const services_id = details._id;
         const newBooking = {email, date, name, price, photo, services_id}
-        fetch('http://localhost:3000/bookings', {
+        fetch('https://home-hero-server-ten.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

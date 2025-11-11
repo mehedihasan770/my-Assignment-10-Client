@@ -15,7 +15,7 @@ const MyBookings = () => {
     const {loading1} = useLoading()
     useEffect(() => {
         if(user){
-            fetch(`http://localhost:3000/bookings?email=${user?.email}`)
+            fetch(`https://home-hero-server-ten.vercel.app/bookings?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyBooking(data)
@@ -34,7 +34,7 @@ const MyBookings = () => {
             })
             .then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/bookings/${id}`, {
+                fetch(`https://home-hero-server-ten.vercel.app/bookings/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -63,7 +63,7 @@ const MyBookings = () => {
         const rating = parseInt(e.target.rating.value)
         const comment = e.target.comment.value;
         const newRating = {comment, rating, email}
-        fetch(`http://localhost:3000/services/${serId}/review`, {
+        fetch(`https://home-hero-server-ten.vercel.app/services/${serId}/review`, {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

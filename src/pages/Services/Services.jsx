@@ -7,6 +7,7 @@ import Loading from '../../components/Loading/Loading';
 
 const Services = () => {
     const [service, setServices] = useState([])
+        const [load, setLoad] = useState(false)
     const {loading1} = useLoading()
 
     Aos.init({
@@ -15,7 +16,7 @@ const Services = () => {
     });
 
     useEffect(() => {
-        fetch('http://localhost:3000/services')
+        fetch('https://home-hero-server-ten.vercel.app/services')
         .then(res => res.json())
         .then(data => {
             setServices(data)
@@ -24,15 +25,20 @@ const Services = () => {
 
     const handleFilterServices = e => {
         e.preventDefault();
+        setLoad(true)
         const min = e.target.min.value;
         const max = e.target.max.value;
-        fetch(`http://localhost:3000/service/filter?min=${min}&max=${max}`)
+        fetch(`https://home-hero-server-ten.vercel.app/service/filter?min=${min}&max=${max}`)
         .then(res => res.json())
         .then(data => {
             setServices(data)
             e.target.reset();
-            
+            setLoad(false)
         })
+    }
+
+    if(load){
+        return <Loading></Loading>
     }
 
     if(loading1){

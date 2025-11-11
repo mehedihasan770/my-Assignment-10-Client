@@ -19,7 +19,7 @@ const Home = () => {
     });
 
     useEffect(() => {
-        fetch('http://localhost:3000/average_top_rating')
+        fetch('https://home-hero-server-ten.vercel.app/average_top_rating')
         .then(res => res.json())
         .then(data => {
             setTopServices(data)

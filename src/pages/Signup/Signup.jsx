@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
 import { FcGoogle } from 'react-icons/fc';
+import { FaEyeLowVision } from 'react-icons/fa6';
+import { FaEye } from 'react-icons/fa';
 
 const Signup = () => {
     const {signupWithEP, updateProfileUser, signInWithGoogle, setUser, setLoading} = useContext(AuthContext)
+    const [show, setShow] = useState(true)
     const navigate = useNavigate()
 
     const handleEPSignUp = e => {
@@ -68,7 +71,10 @@ const Signup = () => {
                         <input type="text" className="input w-full" name='photoURL' required placeholder="Photo URL" />
             
                         <label className="label">Password</label>
-                        <input type="password" className="input w-full" name='pass' required placeholder="Password" />
+                        <div className='relative'>
+                            <input type={show ? "password" : "text"} className="input w-full" name='pass' required placeholder="Password" />
+                            <p className="absolute bottom-2.5 right-4" onClick={() => setShow(!show)}>{show ? <FaEyeLowVision size={21}/> : <FaEye size={20}/>}</p>
+                        </div>
 
                         <button className="btn w-full border-2 md:text-[16px] mt-3 border-[#F3601A]  font-bold text-white bg-[#F3601A] h-8 md:h-10">Signup</button>
                         <div className="flex items-center">

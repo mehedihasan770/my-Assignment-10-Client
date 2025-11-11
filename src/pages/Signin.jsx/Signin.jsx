@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router';
+import { FaEye, FaEyeLowVision } from 'react-icons/fa6';
 
 const Signin = () => {
     const {setUser, signinWithEP, signInWithGoogle, setLoading} = useContext(AuthContext)
+    const [show, setShow] = useState(true)
     const navigate = useNavigate()
     const location = useLocation()
     const handleEPSignin = e => {
@@ -49,7 +51,11 @@ const Signin = () => {
                     <input type="email" className="input" required name='email' placeholder="Email" />
 
                     <label className="label">Password</label>
-                    <input type="password" className="input" required name='pass' placeholder="Password" />
+                    <div className='relative'>
+                        <input type={show ? "password" : "text"} className="input" required name='pass' placeholder="Password" />
+                        <p className="absolute bottom-2.5 right-4" onClick={() => setShow(!show)}>{show ? <FaEyeLowVision size={21}/> : <FaEye size={20}/>}</p>
+                    </div>
+                    
 
                     <div><a className="link link-hover">Forgot password?</a></div>
 
