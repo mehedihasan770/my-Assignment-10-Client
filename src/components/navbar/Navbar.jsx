@@ -87,9 +87,12 @@ const Navbar = () => {
           <span className="cursor-pointer">{theme === "dark" ? (<FaMoon size={30} />) : (<IoSunnySharp size={30} />)}</span>
       </span>
     </div> :
-    <div className="space-x-3">
+    <div className="flex space-x-3 items-center">
       <Link to={'/sign_in'} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">Signin</Link>
       <Link to={'/sign_up'} className="btn md:text-[16px] border-2 border-[#F3601A] bg-[#F3601A] text-white w-16 h-8 md:w-32 md:h-10">Signup</Link>
+      <span onClick={handleTheme}>
+          <span className="cursor-pointer">{theme === "dark" ? (<FaMoon size={30} />) : (<IoSunnySharp size={30} />)}</span>
+      </span>
     </div>
     }
   </div>
