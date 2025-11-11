@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import { useLoading } from '../../Hooks/useLoading';
 import Loading from '../../components/Loading/Loading';
 import Marqu from '../../components/Cursole/Marqu';
+import MitOurExpart from '../../components/MitOurExpart/MitOurExpart';
 
 const Home = () => {
     const [topServices, setTopServices] = useState([])
@@ -68,6 +69,9 @@ const Home = () => {
                 </div>
                 <div>
                     <Marqu></Marqu>
+                </div>
+                <div>
+                    <MitOurExpart></MitOurExpart>
                 </div>
             </main>
         </div>
