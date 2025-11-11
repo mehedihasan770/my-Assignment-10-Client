@@ -2,9 +2,20 @@ import { useEffect, useState } from 'react';
 import CarouselSlider from '../../components/carouselSlider/CarouselSlider';
 import { Link } from 'react-router';
 import { FcRating } from 'react-icons/fc';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useLoading } from '../../Hooks/useLoading';
+import Loading from '../../components/Loading/Loading';
+import Marqu from '../../components/Cursole/Marqu';
 
 const Home = () => {
     const [topServices, setTopServices] = useState([])
+    const {loading1} = useLoading()
+
+    AOS.init({
+      duration: 1000,
+      once: true, 
+    });
 
     useEffect(() => {
         fetch('http://localhost:3000/average_top_rating')
@@ -14,18 +25,22 @@ const Home = () => {
         })
     })
 
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
-        <div className='md:mt-10 mt-5'>
+        <div className='mt-10'>
             <header>
                 <CarouselSlider></CarouselSlider>
             </header>
-            <div className='border-t mt-3 mb-3 border-gray-400'></div>
-            <h1 className='text-center text-3xl font-bold'>top six-rated services</h1>
+            <div className='border-t mt-10 mb-3 border-gray-400'></div>
+            <h1 className='text-center text-2xl font-bold text-[#F3601A]'>Top (6) Services</h1>
             <main>
                 <div className='mt-5'>
                     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 { topServices.map( ser => 
-                <div key={ser._id} className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
+                <div key={ser._id} data-aos="fade-up" data-aos-duration="1500" className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
                     <div className="relative">
                         <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl h-60 overflow-hidden object-cover hover:scale-105 transition-transform duration-400"/>
                         <div className='flex space-x-1 absolute top-3 left-3'>
@@ -45,11 +60,14 @@ const Home = () => {
             </div>
                 <span className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{ser.contact_email}</span>
             </div>
-            <Link to={`/details/${ser._id}`}><button className="cursor-pointer mt-4 w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 dark:hover:bg-blue-600 transition duration-200 font-medium shadow-md">View Details</button></Link>
+            <Link to={`/details/${ser._id}`}><button className="btn border-2 w-full mt-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">View Details</button></Link>
       </div>
     </div>
 )}
             </div>
+                </div>
+                <div>
+                    <Marqu></Marqu>
                 </div>
             </main>
         </div>

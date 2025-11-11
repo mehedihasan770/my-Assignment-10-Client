@@ -1,9 +1,12 @@
 import React, { useContext, useRef } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
+import { useLoading } from '../../Hooks/useLoading';
+import Loading from '../../components/Loading/Loading';
 
 const MyProfile = () => {
     const {user, updateProfileUser, setLoading} = useContext(AuthContext)
+    const {loading1} = useLoading()
     const modalRef = useRef()
     const handleProfileUpdateUser = e => {
         e.preventDefault()
@@ -21,9 +24,14 @@ const MyProfile = () => {
         })
         modalRef.current.close()
     }
+
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
-        <div className='flex md:mt-20 mt-10 justify-center'>
-            <div className="max-w-sm w-full dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-md p-6 flex flex-col items-center text-center">
+        <div className='flex mt-10 justify-center'>
+            <div className="max-w-sm w-full dark:bg-gray-900 border border-[#F3601A] dark:border-gray-800 rounded-2xl shadow-md p-6 flex flex-col items-center text-center">
                 <img src={user.photoURL} alt="" className="w-24 h-24 rounded-full object-cover border-2 border-gray-200 dark:border-gray-700 shadow-sm"/>
                 <h2 className="mt-4 text-lg font-semibold">{user?.displayName}</h2>
                 <p className="text-sm">{user?.email}</p>
@@ -32,7 +40,7 @@ const MyProfile = () => {
             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <form onSubmit={handleProfileUpdateUser}>
-                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+                    <fieldset className="fieldset rounded-box p-4">
 
                         <label className="label">Name</label>
                         <input type="text" className="input w-full" defaultValue={user?.displayName} name='name' required placeholder="Name" />

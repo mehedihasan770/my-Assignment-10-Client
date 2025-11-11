@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import { useLoading } from '../../Hooks/useLoading';
+import Loading from '../../components/Loading/Loading';
 
 const AddService = () => {
     const {user} = useContext(AuthContext)
+    const {loading1} = useLoading()
 
     const handleAddService = e => {
         e.preventDefault();
@@ -38,9 +41,15 @@ const AddService = () => {
             }
         })
     }
+
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
         <div className='mt-10'>
-        <div className='max-w-[700px] border mx-auto rounded-2xl p-5'>
+            <h1 className='text-center text-2xl font-bold mb-5 text-[#F3601A]'>Add Your Home Services</h1>
+        <div className='max-w-[700px] border border-[#F3601A] mx-auto rounded-2xl p-5'>
             <form onSubmit={handleAddService}>
                 <fieldset className="fieldset">
 

@@ -3,6 +3,8 @@ import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AuthContext } from '../../authContext/AuthContext';
 import Swal from 'sweetalert2';
+import Loading from '../../components/Loading/Loading';
+import { useLoading } from '../../Hooks/useLoading';
 
 const MyServices = () => {
     const {user} = useContext(AuthContext)
@@ -10,6 +12,7 @@ const MyServices = () => {
     const [myServices, setMyServices] = useState([])
     const [singleServices1, setSingleServices] = useState({})
     const [shouldFetch, setShouldFetch] = useState(false);
+    const {loading1} = useLoading()
     useEffect(() => {
         if(user){
             fetch(`http://localhost:3000/services?email=${user?.email}`)
@@ -89,8 +92,12 @@ const MyServices = () => {
     });
     }
 
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
-        <div className='mt-5'>
+        <div className='mt-10'>
             <div className="overflow-x-auto">
   <table className="table w-full min-w-[600px]">
     <thead>

@@ -1,8 +1,19 @@
+import Aos from 'aos';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import 'aos/dist/aos.css';
+import { useLoading } from '../../Hooks/useLoading';
+import Loading from '../../components/Loading/Loading';
 
 const Services = () => {
     const [service, setServices] = useState([])
+    const {loading1} = useLoading()
+
+    Aos.init({
+          duration: 1000,
+          once: true, 
+    });
+
     useEffect(() => {
         fetch('http://localhost:3000/services')
         .then(res => res.json())
@@ -24,8 +35,12 @@ const Services = () => {
         })
     }
 
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
-        <div className='mt-5'>
+        <div className='mt-10'>
             <form onSubmit={handleFilterServices} className="flex gap-1 my-4">
                 <input
                 type="number"
@@ -44,7 +59,7 @@ const Services = () => {
             {service.length === 0 && <div className='text-3xl flex justify-center text-gray-400 font-bold items-center min-h-[calc(100vh-180px)]'><h1>No Data</h1></div>}
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 { service.map( ser => 
-                <div key={ser._id} className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
+                <div key={ser._id} data-aos="fade-up" data-aos-duration="1500" className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
                     <div className="relative">
                         <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl h-60 overflow-hidden object-cover hover:scale-105 transition-transform duration-400"/>
                         <span className="absolute top-3 left-3 text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md">${ser.service_Price}</span>
@@ -58,7 +73,7 @@ const Services = () => {
             </div>
                 <span className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{ser.contact_email}</span>
             </div>
-            <Link to={`/details/${ser._id}`}><button className="cursor-pointer mt-4 w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 dark:hover:bg-blue-600 transition duration-200 font-medium shadow-md">View Details</button></Link>
+            <Link to={`/details/${ser._id}`}><button className="btn border-2 w-full mt-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">View Details</button></Link>
       </div>
     </div>
 )}

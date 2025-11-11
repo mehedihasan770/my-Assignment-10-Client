@@ -45,7 +45,9 @@ const CarouselSlider = () => {
       <div className="absolute ml-10 mt-5 z-15 text-white">
         <h3 className='mt-2 font-semibold'>Our Sofa Cleaning Service Process</h3>
         <p className='max-w-[800px] text-white/85'>We, Clean & Green, have been providing sofa cleaning services for a long time. Since sofas are made of fabric or leather, we plan the cleaning according to the material. Below, we describe our working method for both sofa types.</p>
+        
         <Link to={'/services'}><button className="text-[#0058DD] cursor-pointer">explore more...</button></Link> 
+        
     </div>
     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-20">
       <a href="#slide2" className="btn btn-circle">❮</a>

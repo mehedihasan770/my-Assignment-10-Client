@@ -64,7 +64,10 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    { loading ? <h1>Loading...</h1> : user ? 
+    { loading ?   <div class="loader">
+    <span class="loader-text">loading</span>
+      <span class="load"></span>
+  </div> : user ? 
     <div className="flex justify-center items-center space-x-3">
       <div className="dropdown dropdown-end z-200 cursor-pointer">
         <img tabIndex={0} role="button" className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />

@@ -3,6 +3,8 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AuthContext } from '../../authContext/AuthContext';
 import { FaStreetView } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import Loading from '../../components/Loading/Loading';
+import { useLoading } from '../../Hooks/useLoading';
 
 const MyBookings = () => {
     const {user} = useContext(AuthContext)
@@ -10,6 +12,7 @@ const MyBookings = () => {
     const [serId, setSerId] = useState('')
     const [shouldFetch, setShouldFetch] = useState(false);
     const modalRef = useRef()
+    const {loading1} = useLoading()
     useEffect(() => {
         if(user){
             fetch(`http://localhost:3000/bookings?email=${user?.email}`)
@@ -75,8 +78,12 @@ const MyBookings = () => {
         modalRef.current.close()
     }
 
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
-        <div className='mt-5'>
+        <div className='mt-10'>
             <div className='overflow-x-auto'> 
                 <table className="table w-full min-w-[600px]">
                     <thead>

@@ -3,12 +3,15 @@ import { useParams } from 'react-router';
 import { AuthContext } from '../../authContext/AuthContext';
 import Swal from 'sweetalert2';
 import { FcRating } from 'react-icons/fc';
+import Loading from '../../components/Loading/Loading';
+import { useLoading } from '../../Hooks/useLoading';
 
 const Details = () => {
     const {user} = useContext(AuthContext)
     const {id} = useParams()
     const [details, setDetails] = useState({})
     const modalRef = useRef()
+    const {loading1} = useLoading()
     useEffect(() => {
         fetch(`http://localhost:3000/services/${id}`)
         .then(res => res.json())
@@ -48,6 +51,10 @@ const Details = () => {
         modalRef.current.close()
     }
 
+    if(loading1){
+        return <Loading></Loading>
+    }
+
     return (
         <div className='mt-5'>
             <div className='flex lg:flex-row rounded-2xl p-5 space-x-4 flex-col shadow-sm'>
@@ -62,21 +69,24 @@ const Details = () => {
                     <h1 className='font-semibold text-gray-600'>{details?.provider_name}</h1>
                     <h1 className='font-semibold text-gray-600'>{details?.contact_email}</h1>
                     <div className='border-t mt-3 mb-3 border-gray-400'></div>
+                    <p className='font-semibold'>description</p>
                     <p className='text-gray-400'>{details?.service_description}</p>
                     <div className='border-t mt-3 mb-3 border-gray-400'></div>
                     { user?.email === details?.provider_email ? <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] btn-disabled'>Book now</button> : <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Book now</button>}
                 </div>
             </div>
-             <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-5 md:mt-10">All Rating</h1>
+            <div className='border-t mt-10 border-gray-400'></div>
+             <h1 className='text-center text-2xl font-bold mb-5 mt-5 text-[#F3601A]'>All Rating</h1>
              {details?.reviews?.length <=0 ? <h1 className='md:text-4xl text-center font-bold text-gray-400 mt-10'>No Rating</h1> : ""}
             <div className='grid md:grid-cols-2 grid-cols-1 gap-5'>
                 {
                     details?.reviews?.map((review, index) => 
-                        <div key={index} className='border border-gray-300 rounded-md shadow-lg p-5'>
+                        <div key={index} className='border border-[#F3601A] rounded-md shadow-lg p-5'>
                             <div className='flex items-center space-x-1 mb-2'>
                                 <FcRating size={25}/>
                                 <h1 className='font-bold'>{review.rating}</h1>
                             </div>
+                            <h1 className='font-semibold mb-1 text-gray-600'>{review.email}</h1>
                             <h1 className='text-gray-500'>{review.comment}</h1>
                         </div>
                     )
