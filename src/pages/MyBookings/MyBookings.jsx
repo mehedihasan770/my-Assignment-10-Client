@@ -22,7 +22,6 @@ const MyBookings = () => {
             })
         }
     }, [user, shouldFetch])
-    console.log(myBooking)
     const handleDeleteBooking = id => {
             Swal.fire({
                 title: "Are you sure?",

@@ -19,7 +19,6 @@ const Details = () => {
             setDetails(data)
         })
     }, [id])
-    console.log(details)
 
     const handleBook = e => {
         e.preventDefault();
