@@ -40,7 +40,7 @@ const Details = () => {
         .then(data => {
             if(data.insertedId){
                Swal.fire({
-                    title: "Update Successful",
+                    title: "Booking Successful",
                     icon: "success",
                     draggable: true
                 }); 
