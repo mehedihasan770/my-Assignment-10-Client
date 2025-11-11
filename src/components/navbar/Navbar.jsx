@@ -56,7 +56,11 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    <a className="md:text-2xl text-[20px] font-bold text-[#F3601A]"><IoIosHome className="-mb-2.5 -ml-[3.5px]"/>Home Hero</a>
+    <div className="flex items-center">
+      <IoIosHome className="md:text-2xl text-[20px] font-bold text-[#F3601A]"/>
+      <a className="md:text-2xl text-[20px] font-bold text-[#F3601A]">Home Hero</a>
+    </div>
+    
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal">
@@ -80,7 +84,7 @@ const Navbar = () => {
         </div>
       </div>
       <span onClick={handleTheme}>
-          <span>{theme === "dark" ? (<FaMoon size={30} />) : (<IoSunnySharp size={30} />)}</span>
+          <span className="cursor-pointer">{theme === "dark" ? (<FaMoon size={30} />) : (<IoSunnySharp size={30} />)}</span>
       </span>
     </div> :
     <div className="space-x-3">
