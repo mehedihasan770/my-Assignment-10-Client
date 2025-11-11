@@ -126,6 +126,7 @@ const MyServices = () => {
       </tr>)}
     </tbody>
   </table>
+  {myServices.length === 0 && <div className='text-3xl flex justify-center text-gray-400 font-bold items-center min-h-[calc(100vh-180px)]'><h1>No Data</h1></div>}
   </div>
         <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">

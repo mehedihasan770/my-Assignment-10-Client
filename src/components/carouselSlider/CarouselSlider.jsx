@@ -18,8 +18,7 @@ const CarouselSlider = () => {
         <p className='max-w-[800px] text-white/85'>We provide the Hotel Restaurant cleaning Service anywhere in Dhaka. If you are looking for a Restaurant cleaning Service Provider Company near Dhaka. Call Clean&green and get information on Restaurant cleaning Service. Call us for Restaurant cleaning Service.</p>
         <Link to={'/services'}><button className="text-[#0058DD] cursor-pointer">explore more...</button></Link> 
     </div>
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-20">
-      <a href="#slide4" className="btn btn-circle">❮</a>
+    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-end z-20">
       <a href="#slide2" className="btn btn-circle">❯</a>
     </div>
   </div>
@@ -50,7 +49,6 @@ const CarouselSlider = () => {
     </div>
     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-20">
       <a href="#slide2" className="btn btn-circle">❮</a>
-      <a href="#slide4" className="btn btn-circle">❯</a>
     </div>
   </div>
 </div>

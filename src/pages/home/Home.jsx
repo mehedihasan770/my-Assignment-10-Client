@@ -27,7 +27,7 @@ const Home = () => {
                 { topServices.map( ser => 
                 <div key={ser._id} className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
                     <div className="relative">
-                        <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl max-h-60 object-cover hover:scale-105 transition-transform duration-400"/>
+                        <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl h-60 overflow-hidden object-cover hover:scale-105 transition-transform duration-400"/>
                         <div className='flex space-x-1 absolute top-3 left-3'>
                             <span className=" text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md">${ser.service_Price}</span>
                             <div className='flex space-x-1 items-center text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md'>

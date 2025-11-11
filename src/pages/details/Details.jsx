@@ -64,7 +64,7 @@ const Details = () => {
                     <div className='border-t mt-3 mb-3 border-gray-400'></div>
                     <p className='text-gray-400'>{details?.service_description}</p>
                     <div className='border-t mt-3 mb-3 border-gray-400'></div>
-                    { user?.email === details?.provider_email ? <p className='bg-[#0058DD] font-semibold py-2 rounded-2xl text-left text-white px-3 w-fit'>You built this service. So, you won’t be able to book.</p> : <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Book now</button>}
+                    { user?.email === details?.provider_email ? <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] btn-disabled'>Book now</button> : <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Book now</button>}
                 </div>
             </div>
              <h1 className="md:text-4xl mb-5 bg-[#0058DD] mx-auto py-2 rounded-2xl text-white px-3 w-fit text-[20px] font-bold mt-5 md:mt-10">All Rating</h1>

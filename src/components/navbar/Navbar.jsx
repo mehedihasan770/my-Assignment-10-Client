@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../authContext/AuthContext";
 import toast from "react-hot-toast";
 import { CgProfile } from "react-icons/cg";
-import { IoBagAddSharp, IoBagCheckSharp, IoBookmarks, IoHome, IoLogOutOutline } from "react-icons/io5";
+import { IoBagAddSharp, IoBagCheckSharp, IoBookmarks, IoHome, IoLogOutOutline, IoSunnySharp } from "react-icons/io5";
 import { LuBaggageClaim } from "react-icons/lu";
 import { IoIosHome } from "react-icons/io";
+import { FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
     const {user, signOutUser, loading} = useContext(AuthContext)
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const links = <>
         <li><NavLink to={'/'}><IoHome />Home</NavLink></li>
         <li><NavLink to={'/services'}><LuBaggageClaim />Services</NavLink></li>
@@ -30,6 +32,15 @@ const Navbar = () => {
           toast.error(error.message)
       })
     }
+
+    useEffect(() => {
+        const html = document.querySelector('html')
+        html.setAttribute('data-theme', theme)
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+    const handleTheme = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
 
     return (
 <div className='bg-base-100 shadow-sm'>
@@ -65,6 +76,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <span onClick={handleTheme}>
+          <span>{theme === "dark" ? (<FaMoon size={30} />) : (<IoSunnySharp size={30} />)}</span>
+      </span>
     </div> :
     <div className="space-x-3">
       <Link to={'/sign_in'} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">Signin</Link>

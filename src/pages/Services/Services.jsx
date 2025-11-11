@@ -10,13 +10,43 @@ const Services = () => {
             setServices(data)
         })
     }, [])
+
+    const handleFilterServices = e => {
+        e.preventDefault();
+        const min = e.target.min.value;
+        const max = e.target.max.value;
+        fetch(`http://localhost:3000/service/filter?min=${min}&max=${max}`)
+        .then(res => res.json())
+        .then(data => {
+            setServices(data)
+            e.target.reset();
+            
+        })
+    }
+
     return (
         <div className='mt-5'>
+            <form onSubmit={handleFilterServices} className="flex gap-1 my-4">
+                <input
+                type="number"
+                name='min'
+                placeholder="Min Price"
+                className="input input-bordered"
+                />
+                <input
+                type="number"
+                name='max'
+                placeholder="Max Price"
+                className="input input-bordered"
+                />
+                <button className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Filter</button>
+            </form>
+            {service.length === 0 && <div className='text-3xl flex justify-center text-gray-400 font-bold items-center min-h-[calc(100vh-180px)]'><h1>No Data</h1></div>}
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 { service.map( ser => 
                 <div key={ser._id} className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
                     <div className="relative">
-                        <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl max-h-60 object-cover hover:scale-105 transition-transform duration-400"/>
+                        <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl h-60 overflow-hidden object-cover hover:scale-105 transition-transform duration-400"/>
                         <span className="absolute top-3 left-3 text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md">${ser.service_Price}</span>
                     </div>
             <div className="p-5">
