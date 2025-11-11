@@ -16,11 +16,11 @@ const MyProfile = () => {
         updateProfileUser(displayName, photoURL)
         .then(() => {
             setLoading(false)
-            toast.success('SignUp successful')
+            toast.success('Update successful')
         })
         .catch(error => {
             setLoading(false)
-            toast.error(error.message,)
+            toast.error(error.message)
         })
         modalRef.current.close()
     }
