@@ -10,6 +10,7 @@ import Signup from "../pages/Signup/Signup";
 import PrivetRouts from "../privetRouts/PrivetRouts";
 import MyProfile from "../pages/myProfile/MyProfile";
 import Details from "../pages/details/details";
+import PageNotFound from "../pages/ErrorPage/PageNotFound";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
             {
                 path: 'sign_up',
                 element: <Signup></Signup>
+            },
+            {
+                path: '*',
+                element: <PageNotFound></PageNotFound>
             }
         ]
-    }
+    },
 ])
