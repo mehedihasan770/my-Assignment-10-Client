@@ -1,16 +1,28 @@
-# React + Vite
+## HomeHero
+HomeHero is a modern all-in-one home service platform where you can easily book your everyday essential services right from your home.
+From home cleaning, electrical repair, and plumbing to appliance fixing and many more — everything you need is available in one place.
+Our goal is to create a reliable, fast, and secure online service system where every task is handled by skilled professionals.
+HomeHero saves your time, effort, and hassle by ensuring that all necessary services are delivered right to your doorstep.
+Here, you can book services, view others’ reviews, manage your own services, and even filter services based on your preferred price range.
+It is a user-friendly, responsive, and theme-customizable system designed to enhance the overall user experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live link
+[]
 
-Currently, two official plugins are available:
+## Features
+- Price Filtering System
+- Theme Customization
+- Rating & Review System
+- Responsive Design
+- Secure and Reliable
+- Notification System
+- Provider Restriction
+- Booking Schedule System
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## npm paces
+- sweetalert2 
+- tailwindcss
+- daisyui
+- react-router
+- firebase-Auth
+- react-hot-toast
