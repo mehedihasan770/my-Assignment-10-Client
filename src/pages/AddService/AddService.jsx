@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authContext/AuthContext';
-import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { useLoading } from '../../Hooks/useLoading';
 import Loading from '../../components/Loading/Loading';
@@ -36,7 +35,6 @@ const AddService = () => {
                     icon: "success",
                     draggable: true
                 });
-                toast.success('Service Added Successful')
                 e.target.reset();
             }
         })

@@ -110,7 +110,7 @@ const Details = () => {
                         <input type="date" className="input w-full"  name='date' required />
 
                         <label className="label">Enter Your Price</label>
-                        <input type="number" className="input w-full"  name='price' required placeholder='Price' />
+                        <input type="number" className="input w-full" defaultValue={details?.service_Price} name='price' required placeholder='Price' />
 
                         <button className="btn border-2 mt-3 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Click to confirm Edit</button>
                     </fieldset>

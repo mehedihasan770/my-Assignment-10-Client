@@ -73,7 +73,14 @@ const MyBookings = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            if(data.modifiedCount){
+               Swal.fire({
+                    title: "Services Review Post Successful",
+                    icon: "success",
+                    draggable: true
+                });
+            e.target.reset() 
+            } 
         })
         modalRef.current.close()
     }
