@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import s1 from '../../assets/S1.jpg'
 import s2 from '../../assets/Ant.jpg'
-import s3 from '../../assets/S3.jpg'
+import s3 from '../../assets/sofa.jpg'
 
 const CarouselSlider = () => {
     return (
