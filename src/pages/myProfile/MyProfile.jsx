@@ -3,6 +3,8 @@ import { AuthContext } from '../../authContext/AuthContext';
 import toast from 'react-hot-toast';
 import { useLoading } from '../../Hooks/useLoading';
 import Loading from '../../components/Loading/Loading';
+import { MdMarkEmailUnread } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 const MyProfile = () => {
     const {user, updateProfileUser, setLoading} = useContext(AuthContext)
@@ -33,9 +35,10 @@ const MyProfile = () => {
         <div className='flex mt-10 justify-center'>
             <div className="max-w-sm w-full dark:bg-gray-900 border border-[#F3601A] dark:border-gray-800 rounded-2xl shadow-md p-6 flex flex-col items-center text-center">
                 <img src={user.photoURL} alt="" className="w-24 h-24 rounded-full object-cover border-2 border-gray-200 dark:border-gray-700 shadow-sm"/>
-                <h2 className="mt-4 text-lg font-semibold">{user?.displayName}</h2>
-                <p className="text-sm">{user?.email}</p>
-                <button onClick={() => modalRef.current.showModal()} className="btn btn-outline border-2 mt-3 btn-primary">Edit Profile</button>
+                <h2 className="mt-4 text-lg font-bold text-gray-600">{user?.displayName}</h2>
+                <p className="text-sm font-semibold text-gray-600"><MdMarkEmailUnread  className='inline-block mr-1' />{user?.email}</p>
+                <p className="text-sm text-gray-400"><span className='text-gray-600 font-semibold'>last Login date :</span> {user?.metadata?.lastSignInTime.split(' ').slice(0, 4).join(' ')}</p>
+                <button onClick={() => modalRef.current.showModal()} className="btn btn-outline border-2 mt-3 btn-primary"><FaEdit />Edit Profile</button>
             </div>
             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">

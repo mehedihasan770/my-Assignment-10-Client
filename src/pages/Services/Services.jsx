@@ -2,13 +2,12 @@ import Aos from 'aos';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import 'aos/dist/aos.css';
-import { useLoading } from '../../Hooks/useLoading';
 import Loading from '../../components/Loading/Loading';
 
 const Services = () => {
     const [service, setServices] = useState([])
-        const [load, setLoad] = useState(false)
-    const {loading1} = useLoading()
+    const [load, setLoad] = useState(false)
+    const [reLoad, setReLoad] = useState(true)
 
     Aos.init({
           duration: 1000,
@@ -16,12 +15,14 @@ const Services = () => {
     });
 
     useEffect(() => {
+        setLoad(true)
         fetch('https://home-hero-server-ten.vercel.app/services')
         .then(res => res.json())
         .then(data => {
             setServices(data)
+            setLoad(false)
         })
-    }, [])
+    }, [reLoad])
 
     const handleFilterServices = e => {
         e.preventDefault();
@@ -41,26 +42,25 @@ const Services = () => {
         return <Loading></Loading>
     }
 
-    if(loading1){
-        return <Loading></Loading>
-    }
-
     return (
         <div className='mt-10'>
             <form onSubmit={handleFilterServices} className="flex gap-1 my-4">
                 <input
                 type="number"
                 name='min'
+                required
                 placeholder="Min Price"
                 className="input input-bordered"
                 />
                 <input
                 type="number"
                 name='max'
+                required
                 placeholder="Max Price"
                 className="input input-bordered"
                 />
                 <button className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Filter</button>
+                <button type='button' onClick={() => setReLoad(!reLoad)} className="btn border-2 border-[#F3601A] text-[#F3601A] font-bold hover:text-white hover:bg-[#F3601A]">Reload page</button>
             </form>
             {service.length === 0 && <div className='text-3xl flex justify-center text-gray-400 font-bold items-center min-h-[calc(100vh-180px)]'><h1>No Data</h1></div>}
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
