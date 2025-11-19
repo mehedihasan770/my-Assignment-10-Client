@@ -1,7 +1,7 @@
 ## HomeHero
 A home cleaning and services website offering plumbing, house cleaning, and other home services. Key features include Price Filtering, Theme Customization, Rating & Review System, Responsive Design, Secure and Reliable Operations, and Notification System.
 
-## Technology Stack
+## Main Technology
 
 <table>
   <tr>
