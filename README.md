@@ -25,6 +25,10 @@ A home cleaning and services website offering plumbing, house cleaning, and othe
       <img src="https://skillicons.dev/icons?i=mongodb" height="40" /><br>
       MongoDB
     </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=firebase" height="40" /><br>
+      Firebase
+    </td>
   </tr>
 </table>
 
