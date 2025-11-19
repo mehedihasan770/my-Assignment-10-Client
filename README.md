@@ -85,6 +85,6 @@ A home cleaning and services website offering plumbing, house cleaning, and othe
 <h2>Live & Relevant Links</h2>
 
 <ul>
-  <li>🌐 <a href="https://home-hero-999.netlify.app/" target="_blank">https://home-hero-999.netlify.app/</a></li>
-  <li>💻 <a href="https://github.com/mehedihasan770/my-Assignment-10-Client.git" target="_blank">https://github.com/mehedihasan770/my-Assignment-10-Client.git</a></li>
+  <li>🌐Live Link <a href="https://home-hero-999.netlify.app/" target="_blank">https://home-hero-999.netlify.app/</a></li>
+  <li>💻Github Repo Link <a href="https://github.com/mehedihasan770/my-Assignment-10-Client.git" target="_blank">https://github.com/mehedihasan770/my-Assignment-10-Client.git</a></li>
 </ul>
