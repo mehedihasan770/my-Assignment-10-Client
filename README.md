@@ -1,28 +1,94 @@
 ## HomeHero
-HomeHero is a modern all-in-one home service platform where you can easily book your everyday essential services right from your home.
-From home cleaning, electrical repair, and plumbing to appliance fixing and many more — everything you need is available in one place.
-Our goal is to create a reliable, fast, and secure online service system where every task is handled by skilled professionals.
-HomeHero saves your time, effort, and hassle by ensuring that all necessary services are delivered right to your doorstep.
-Here, you can book services, view others’ reviews, manage your own services, and even filter services based on your preferred price range.
-It is a user-friendly, responsive, and theme-customizable system designed to enhance the overall user experience.
+A home cleaning and services website offering plumbing, house cleaning, and other home services. Key features include Price Filtering, Theme Customization, Rating & Review System, Responsive Design, Secure and Reliable Operations, and Notification System.
 
-## Live link
-[https://home-hero-999.netlify.app/]
+## Main Technology
 
-## Features
-- Price Filtering System
-- Theme Customization
-- Rating & Review System
-- Responsive Design
-- Secure and Reliable
-- Notification System
-- Provider Restriction
-- Booking Schedule System
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=react" height="40" /><br>
+      React
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=tailwind" height="40" /><br>
+      Tailwind
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=nodejs" height="40" /><br>
+      Node.js
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=express" height="40" /><br>
+      Express
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=mongodb" height="40" /><br>
+      MongoDB
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=firebase" height="40" /><br>
+      Firebase
+    </td>
+  </tr>
+</table>
 
-## npm paces
-- sweetalert2 
-- tailwindcss
-- daisyui
-- react-router
-- firebase-Auth
-- react-hot-toast
+
+<h2>Main Features</h2>
+
+<ul>
+  <li>💰 Price Filtering System</li>
+  <li🎨 Theme Customization</li>
+  <li>⭐ Rating & Review System</li>
+  <li>📱 Responsive Design</li>
+  <li>🔒 Secure and Reliable</li>
+  <li>🔔 Notification System</li>
+  <li>📅 Booking Schedule System</li>
+</ul>
+
+<h2>Dependencies</h2>
+<ul>
+  <li>@tailwindcss/vite</li>
+  <li>animate.css</li>
+  <li>aos</li>
+  <li>daisyui</li>
+  <li>firebase</li>
+  <li>framer-motion</li>
+  <li>react</li>
+  <li>react-dom</li>
+  <li>react-fast-marquee</li>
+  <li>react-hot-toast</li>
+  <li>react-icons</li>
+  <li>react-router</li>
+  <li>sweetalert2</li>
+  <li>tailwindcss</li>
+</ul>
+
+
+<h2>How to Run Locally</h2>
+
+<p>Follow these steps to run the project on your local machine:</p>
+
+<ol>
+  <li>Clone the repository:
+    <pre><code>git clone https://github.com/mehedihasan770/my-Assignment-10-Client.git</code></pre>
+  </li>
+  <li>Navigate to the project directory:
+    <pre><code>cd my-Assignment-10-Client</code></pre>
+  </li>
+  <li>Install dependencies:
+    <pre><code>npm install</code></pre>
+  </li>
+  <li>Add your Firebase environment configuration:
+    <pre>Set your Firebase API keys and config in the .env file</pre>
+  </li>
+  <li>Start the frontend:
+    <pre><code>npm run dev</code></pre>
+  </li>
+</ol>
+
+<h2>Live & Relevant Links</h2>
+
+<ul>
+  <li>🌐Live Link <a href="https://home-hero-999.netlify.app/" target="_blank">https://home-hero-999.netlify.app/</a></li>
+  <li>💻Github Repo Link <a href="https://github.com/mehedihasan770/my-Assignment-10-Client.git" target="_blank">https://github.com/mehedihasan770/my-Assignment-10-Client.git</a></li>
+</ul>
