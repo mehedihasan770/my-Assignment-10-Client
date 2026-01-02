@@ -14,12 +14,14 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to={'/'}><IoHome />Home</NavLink></li>
         <li><NavLink to={'/services'}><LuBaggageClaim />Services</NavLink></li>
+        <li><NavLink to={'/about'}><LuBaggageClaim />About</NavLink></li>
+        <li><NavLink to={'/terms-privacy'}><LuBaggageClaim />Terms Privacy</NavLink></li>
         {
-          user && <>
-            <li><NavLink to={'/my_services'}><IoBagCheckSharp />My Services</NavLink></li>
-            <li><NavLink to={'/add_services'}><IoBagAddSharp />Add Service</NavLink></li>
-            <li><NavLink to={'/my_bookings'}><IoBookmarks />My Bookings</NavLink></li>
-          </>
+          // user && <>
+          //   <li><NavLink to={'/my_services'}><IoBagCheckSharp />My Services</NavLink></li>
+          //   <li><NavLink to={'/add_services'}><IoBagAddSharp />Add Service</NavLink></li>
+          //   <li><NavLink to={'/my_bookings'}><IoBookmarks />My Bookings</NavLink></li>
+          // </>
         }
     </>
 
@@ -43,7 +45,7 @@ const Navbar = () => {
     };
 
     return (
-<div className='bg-base-100 shadow-sm'>
+<div className='bg-[#0058DD]/80 backdrop-blur-sm shadow-sm'>
 <div className="navbar px-2 md:px-0 md:max-w-10/12 mx-auto p-0">
   <div className="navbar-start">
     <div className="dropdown">
@@ -56,10 +58,10 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    <div className="flex items-center">
+    <Link to={'/'} className="flex items-center">
       <IoIosHome className="md:text-2xl text-[20px] font-bold text-[#F3601A]"/>
       <a className="md:text-2xl text-[20px] font-bold text-[#F3601A]">Home Hero</a>
-    </div>
+    </Link>
     
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -78,8 +80,8 @@ const Navbar = () => {
         <div tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 p-2 shadow-sm">
           <div className="w-35">
             <h1 className="text-center mb-1 font-semibold">{user?.displayName}</h1>
-            <Link to={'/my_profile'} className="btn h-7 mb-2 w-full btn-soft btn-primary"><CgProfile />Profile</Link>
-            <button onClick={handleSignoutUser} className="btn h-7 w-full btn-soft btn-primary"><IoLogOutOutline />Log out</button>
+            <Link to={'/dashboard'} className="btn h-7 mb-2 w-full btn-soft hover:bg-[#F3601A] hover:text-white"><CgProfile />Dashboard</Link>
+            <button onClick={handleSignoutUser} className="btn h-7 w-full btn-soft hover:bg-[#F3601A] hover:text-white"><IoLogOutOutline />Log out</button>
           </div>
         </div>
       </div>
@@ -88,7 +90,7 @@ const Navbar = () => {
       </span>
     </div> :
     <div className="flex space-x-3 items-center">
-      <Link to={'/sign_in'} className="btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">Signin</Link>
+      <Link to={'/sign_in'} className="btn border-2 md:text-[16px] border-[#F3601A] bg-[#0058DD] text-[#ffffff] font-bold hover:text-white hover:bg-[#0058DD] w-16 h-8 md:w-32 md:h-10">Signin</Link>
       <Link to={'/sign_up'} className="btn md:text-[16px] border-2 border-[#F3601A] bg-[#F3601A] text-white w-16 h-8 md:w-32 md:h-10">Signup</Link>
       <span onClick={handleTheme}>
           <span className="cursor-pointer">{theme === "dark" ? (<FaMoon size={30} />) : (<IoSunnySharp size={30} />)}</span>

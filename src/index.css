@@ -2,10 +2,14 @@
 @plugin "daisyui";
 
 li .active{
-    @apply border-b-2 md:text-[16px] border-b-[#0058DD] font-semibold text-[#0058DD]
+    @apply border-b-2 md:text-[16px] border-b-[#F3601A] font-bold text-[#F3601A]
 }
 ul li{
     @apply font-semibold md:text-[16px]
+}
+
+.active-menu-link {
+  @apply bg-green-50 text-gray-900 font-medium;
 }
 
 .tebel{

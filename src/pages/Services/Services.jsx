@@ -8,6 +8,7 @@ const Services = () => {
     const [service, setServices] = useState([])
     const [load, setLoad] = useState(false)
     const [reLoad, setReLoad] = useState(true)
+    const placeholders = Array.from({ length: 8 });
 
     Aos.init({
           duration: 1000,
@@ -38,10 +39,6 @@ const Services = () => {
         })
     }
 
-    if(load){
-        return <Loading></Loading>
-    }
-
     return (
         <div className='mt-10'>
             <form onSubmit={handleFilterServices} className="flex gap-1 my-4">
@@ -62,9 +59,41 @@ const Services = () => {
                 <button className="btn border-2 border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]">Filter</button>
                 <button type='button' onClick={() => setReLoad(!reLoad)} className="btn border-2 border-[#F3601A] text-[#F3601A] font-bold hover:text-white hover:bg-[#F3601A]">Reload page</button>
             </form>
-            {service.length === 0 && <div className='text-3xl flex justify-center text-gray-400 font-bold items-center min-h-[calc(100vh-180px)]'><h1>No Data</h1></div>}
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
-                { service.map( ser => 
+            {load ? '' : service.length === 0 && <div className='text-3xl flex justify-center text-gray-400 font-bold items-center min-h-[calc(100vh-180px)]'><h1>No Data</h1></div>}
+            <div className='grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
+                {load ? placeholders.map((_, i) => (
+            <div
+              key={i}
+              className="p-3 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 animate-pulse"
+            >
+              <div className="relative">
+                {/* Image Skeleton */}
+                <div className="w-full h-60 bg-gray-300 dark:bg-gray-700 rounded-2xl mb-3"></div>
+
+                {/* Price & Rating Skeleton */}
+                <div className="flex space-x-2 absolute top-3 left-3">
+                  <div className="h-6 w-16 bg-gray-300 rounded-full"></div>
+                  <div className="h-6 w-20 bg-gray-300 rounded-full flex items-center justify-center"></div>
+                </div>
+              </div>
+
+              <div className="p-5 space-y-3">
+                {/* Service Name Skeleton */}
+                <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+
+                {/* Provider & Category Skeleton */}
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                  <div className="h-3 bg-gray-300 rounded w-1/3"></div>
+                </div>
+
+                {/* Contact Skeleton */}
+                <div className="h-5 bg-gray-300 rounded w-1/2 mt-2"></div>
+
+                {/* Button Skeleton */}
+                <div className="h-10 bg-gray-300 rounded w-full mt-3"></div>
+              </div>
+            </div>)) : service.map( ser => 
                 <div key={ser._id} data-aos="fade-up" data-aos-duration="1500" className="p-3 rounded-2xl shadow-lg dark:shadow-gray-700 overflow-hidden hover:shadow-2xl dark:hover:shadow-gray-600 duration-300 border border-gray-100 dark:border-gray-700">
                     <div className="relative">
                         <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl h-60 overflow-hidden object-cover hover:scale-105 transition-transform duration-400"/>
