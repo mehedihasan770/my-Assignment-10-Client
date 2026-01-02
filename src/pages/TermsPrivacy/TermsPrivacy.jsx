@@ -3,8 +3,6 @@ import { FaShieldAlt, FaBook, FaUserCheck, FaRegClock, FaCheckCircle, FaLock } f
 const TermsPrivacy = () => {
   return (
     <section className="py-24 space-y-48">
-
-      {/* HERO */}
       <div className="text-center max-w-3xl mx-auto space-y-8">
         <h1 className="text-2xl font-extrabold text-[#F3601A]">
           Terms & Privacy
@@ -17,7 +15,6 @@ const TermsPrivacy = () => {
         </p>
       </div>
 
-      {/* TERMS OF SERVICE */}
       <div className="space-y-32">
         <h2 className="text-2xl font-semibold text-[#F3601A] mb-12 text-center border-b-2 border-gray-300 pb-4">
           Terms of Service
@@ -62,7 +59,6 @@ const TermsPrivacy = () => {
         </div>
       </div>
 
-      {/* PRIVACY POLICY */}
       <div className="space-y-40">
         <h2 className="text-2xl font-semibold text-[#F3601A] mb-12 text-center border-b-2 border-gray-300 pb-4">
           Privacy Policy
@@ -112,7 +108,6 @@ const TermsPrivacy = () => {
         </div>
       </div>
 
-      {/* ADDITIONAL INFORMATION */}
       <div className="space-y-28">
         <h2 className="text-2xl font-semibold text-[#F3601A] mb-12 text-center border-b-2 border-gray-300 pb-4">
           Additional Information
@@ -139,8 +134,7 @@ const TermsPrivacy = () => {
           </div>
         </div>
       </div>
-
-      {/* FOOTER NOTE */}
+      
       <div className="text-center pt-28 border-t border-gray-300">
         <p className="text-sm text-gray-500">
           HomeHero — committed to providing secure, transparent, and reliable home services for all users.

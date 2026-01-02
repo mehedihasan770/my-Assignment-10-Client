@@ -9,7 +9,7 @@ const CarouselSlider = () => {
         <div>
             <div className="carousel w-full rounded-2xl max-h-[500px] overflow-x-hidden">
   <div id="slide1" className="carousel-item relative w-full">
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/100 to-black/20 z-10"></div>
+    <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-black to-black/20 z-10"></div>
     <img
       src={s1}
       className="w-full" />
@@ -23,7 +23,7 @@ const CarouselSlider = () => {
     </div>
   </div>
   <div id="slide2" className="carousel-item relative w-full">
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/100 to-black/20 z-10"></div>
+    <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-black to-black/20 z-10"></div>
     <img
       src={s2}
       className="w-full" />
@@ -38,7 +38,7 @@ const CarouselSlider = () => {
     </div>
   </div>
   <div id="slide3" className="carousel-item relative w-full">
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/100 to-black/20 z-10"></div>
+    <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-black to-black/20 z-10"></div>
     <img
       src={s3}
       className="w-full" />

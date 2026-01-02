@@ -5,9 +5,10 @@ import { Link } from 'react-router';
 
 const Marqu = () => {
     return (
-        <div>
-            <div className='border-t mt-10 mb-3 border-gray-400'></div>
-            <h1 className='text-center text-2xl font-bold text-[#F3601A]'>Smart, Clean & Safe — All in One Place</h1>
+        <div className='py-20'>
+            <h2 className="text-4xl font-bold mb-6 text-center">
+                All in<span className="text-[#F3601A] text-center">One Place</span>
+            </h2>
         <div className='mt-5 mb-5 relative rounded-2xl py-8'>
             <div className="absolute top-0 rounded-2xl left-0 h-full w-40 bg-linear-to-r from-black/30 to-transparent z-10 pointer-events-none" />
             <div className="absolute top-0 rounded-2xl right-0 h-full w-40 bg-linear-to-l from-black/30 to-transparent z-10 pointer-events-none" />

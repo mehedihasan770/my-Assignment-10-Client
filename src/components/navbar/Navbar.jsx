@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../authContext/AuthContext";
-import toast from "react-hot-toast";
 import { CgProfile } from "react-icons/cg";
 import { IoBagAddSharp, IoBagCheckSharp, IoBookmarks, IoHome, IoLogOutOutline, IoSunnySharp } from "react-icons/io5";
 import { LuBaggageClaim } from "react-icons/lu";
@@ -9,31 +8,15 @@ import { IoIosHome } from "react-icons/io";
 import { FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
-    const {user, signOutUser, loading} = useContext(AuthContext)
+    const {user,  loading} = useContext(AuthContext)
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const links = <>
         <li><NavLink to={'/'}><IoHome />Home</NavLink></li>
         <li><NavLink to={'/services'}><LuBaggageClaim />Services</NavLink></li>
         <li><NavLink to={'/about'}><LuBaggageClaim />About</NavLink></li>
         <li><NavLink to={'/terms-privacy'}><LuBaggageClaim />Terms Privacy</NavLink></li>
-        {
-          // user && <>
-          //   <li><NavLink to={'/my_services'}><IoBagCheckSharp />My Services</NavLink></li>
-          //   <li><NavLink to={'/add_services'}><IoBagAddSharp />Add Service</NavLink></li>
-          //   <li><NavLink to={'/my_bookings'}><IoBookmarks />My Bookings</NavLink></li>
-          // </>
-        }
     </>
 
-    const handleSignoutUser = () => {
-      signOutUser()
-      .then(() => {
-          toast.success('Signout Successful')
-      })
-      .catch(error => {
-          toast.error(error.message)
-      })
-    }
 
     useEffect(() => {
         const html = document.querySelector('html')
@@ -78,10 +61,9 @@ const Navbar = () => {
       <div className="dropdown dropdown-end z-200 cursor-pointer">
         <img tabIndex={0} role="button" className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
         <div tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 p-2 shadow-sm">
-          <div className="w-35">
+          <div className="w-45">
             <h1 className="text-center mb-1 font-semibold">{user?.displayName}</h1>
             <Link to={'/dashboard'} className="btn h-7 mb-2 w-full btn-soft hover:bg-[#F3601A] hover:text-white"><CgProfile />Dashboard</Link>
-            <button onClick={handleSignoutUser} className="btn h-7 w-full btn-soft hover:bg-[#F3601A] hover:text-white"><IoLogOutOutline />Log out</button>
           </div>
         </div>
       </div>

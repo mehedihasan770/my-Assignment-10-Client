@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <section className="px-4 py-24 space-y-32">
-      {/* HERO */}
+
       <div className="text-center max-w-3xl mx-auto space-y-6">
         <h1 className="text-2xl font-extrabold text-[#F3601A]">
           About HomeHero
@@ -16,7 +16,6 @@ const About = () => {
         </p>
       </div>
 
-      {/* OVERVIEW */}
       <div className="grid md:grid-cols-2 gap-20 items-start">
         <div className="space-y-6 text-gray-500 leading-relaxed text-xl">
           <p>
@@ -40,7 +39,6 @@ const About = () => {
             while ensuring quality service delivery.
           </p>
 
-          {/* Extra content */}
           <div className="mt-6 space-y-3">
             <h3 className="text-xl font-semibold text-[#F3601A]">
               Key Benefits
@@ -72,7 +70,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* WHY CHOOSE US */}
       <div>
         <h2 className="text-2xl font-semibold text-[#F3601A] mb-12">
           Why Choose HomeHero
@@ -110,7 +107,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* HOW IT WORKS */}
       <div>
         <h2 className="text-2xl font-semibold text-[#F3601A] mb-12">
           How It Works
@@ -147,7 +143,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* VISION */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold text-[#F3601A] mb-2">
           Our Vision
@@ -167,7 +162,6 @@ const About = () => {
         </p>
       </div>
 
-      {/* FOOTER NOTE */}
       <div className="text-center pt-16 border-t border-gray-300">
         <p className="text-sm text-gray-500">
           HomeHero — simplifying home services through smart technology.

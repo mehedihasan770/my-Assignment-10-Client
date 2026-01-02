@@ -16,9 +16,10 @@ const MitOurExpart = () => {
 
     return (
         <div>
-            <div className='border-t mt-10 mb-3 border-gray-400'></div>
-            <h1 className='text-center text-2xl font-bold text-[#F3601A]'> Meet Our Experts</h1>
-            <div className="my-12">
+            <div className="py-20">
+                <h2 className="text-4xl font-bold mb-6 text-center">
+                    Meet Our<span className="text-[#F3601A] text-center">Experts</span>
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div data-aos="fade-up" data-aos-duration="1500" className="rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg duration-300 border border-amber-300">
                         <img src={img3} alt="" className="w-24 h-24 rounded-full bg-gray-200 mb-4" />

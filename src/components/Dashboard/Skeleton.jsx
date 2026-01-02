@@ -4,15 +4,13 @@ const Skeleton = () => {
     return (
         <div className="px-3 py-3 md:px-0 md:max-w-10/12 mx-auto">
   <main className="flex gap-5 min-h-screen relative">
-    {/* Sidebar Skeleton */}
+
     <aside className="fixed lg:static inset-y-0 left-0 z-50 w-64">
       <div className="flex flex-col shadow bg-white/5 h-full py-5 rounded-2xl">
-        {/* Mobile Close Button Skeleton */}
+
         <div className="absolute top-4 right-4 lg:hidden">
           <div className="w-8 h-8 bg-gray-400/50 rounded-lg animate-pulse" />
         </div>
-
-        {/* Logo Skeleton */}
         <div className="flex items-center justify-center pb-6 border-b border-gray-200 mb-8">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-gray-400/50 rounded animate-pulse" />
@@ -20,7 +18,6 @@ const Skeleton = () => {
           </div>
         </div>
 
-        {/* Menu Skeleton */}
         <nav className="flex-1 px-6 overflow-y-auto">
           <div className="mb-8">
             <div className="w-24 h-4 bg-gray-400/50 rounded animate-pulse mb-4" />
@@ -39,16 +36,14 @@ const Skeleton = () => {
       </div>
     </aside>
 
-    {/* Main Content Skeleton */}
     <div className="space-y-5 w-full">
-      {/* Top Navbar Skeleton */}
+
       <div className="flex items-center justify-between p-5 rounded-2xl shadow bg-white/5">
-        {/* Mobile Hamburger Skeleton */}
+ 
         <div className="lg:hidden">
           <div className="w-10 h-10 bg-gray-400/50 rounded-lg animate-pulse" />
         </div>
 
-        {/* Profile Dropdown Skeleton */}
         <div className="flex items-center space-x-6">
           <div className="flex items-center space-x-3">
             <div className="text-right">
@@ -61,7 +56,7 @@ const Skeleton = () => {
         </div>
       </div>
 
-      {/* Main Content Area Skeleton */}
+
       <div className="bg-white/5 w-full shadow p-5 rounded-2xl">
         <div className="space-y-6">
           <div className="w-64 h-8 bg-gray-400/50 rounded animate-pulse" />

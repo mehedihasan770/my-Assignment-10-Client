@@ -1,7 +1,5 @@
 import { Link } from "react-router";
 import error from '../../assets/Error.jpg'
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/Footer";
 
 const PageNotFound = () => {
     return (

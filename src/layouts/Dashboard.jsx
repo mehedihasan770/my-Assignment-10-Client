@@ -182,7 +182,6 @@ const Dashboard = () => {
   </div>) : 
               <div className="flex items-center space-x-6">
                 <div className="relative group">
-                  {/* Dropdown Trigger - Profile picture + name + dropdown arrow */}
                   <button className="flex items-center space-x-3 focus:outline-none cursor-pointer">
                     <div className="text-right">
                       <p className="text-sm font-semibold text-gray-500">
@@ -197,7 +196,6 @@ const Dashboard = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    {/* Dropdown arrow icon */}
                     <svg
                       className="w-4 h-4 text-gray-600 ml-1"
                       fill="none"
@@ -213,7 +211,6 @@ const Dashboard = () => {
                     </svg>
                   </button>
 
-                  {/* Dropdown Menu - তোমার দেয়া style অনুযায়ী */}
                   <div className="absolute right-0 mt-2 w-56 bg-white/10 z-50 rounded-lg shadow p-2 invisible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto transition-all duration-200 pointer-events-none">
                     <ul className="space-y-1">
                       <li>
@@ -294,7 +291,6 @@ const Dashboard = () => {
                 </div>
               </div>}
             </div>
-
             <div className="bg-white/5 w-full min-h-screen shadow p-5 rounded-2xl">
               <Outlet />
             </div>

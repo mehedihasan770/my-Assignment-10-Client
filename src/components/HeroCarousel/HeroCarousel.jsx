@@ -7,6 +7,7 @@ import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import { Link } from "react-router";
 
 const slides = [
   {
@@ -41,11 +42,11 @@ const HeroCarousel = () => {
         loop={true}
         pagination={{ clickable: true }}
         navigation={true}
-        speed={1200}
+        speed={1000}
         className="h-full"
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
+        {slides.map((slide, i) => (
+          <SwiperSlide key={i}>
             <div className="relative h-full w-full">
               <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -55,18 +56,21 @@ const HeroCarousel = () => {
               <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-transparent md:from-black/80 md:via-black/50" />
 
               <div className="relative container mx-auto h-full flex items-center px-6 sm:px-10 md:px-12 lg:px-20">
-                <div className="max-w-3xl text-white text-left md:text-left lg:max-w-4xl">
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 md:mb-6">
+                <div className="max-w-3xl text-left md:text-left lg:max-w-4xl">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#F3601A] font-extrabold leading-tight mb-4 md:mb-6">
                     {slide.title}
                   </h1>
-                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-8 md:mb-12 opacity-95">
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium mb-8 md:mb-12 opacity-95">
                     {slide.subtitle}
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                    <button className="border-2 border-white text-white font-semibold py-4 px-10 sm:py-5 sm:px-12 rounded-full text-lg sm:text-xl hover:bg-white hover:text-black transition-all duration-300">
-                      Get Quote
+                    <Link to={'/services'}>
+                    <button className="border-2 cursor-pointer border-[#0058DD] text-[#0058DD] font-semibold py-4 px-10 sm:py-5 sm:px-12 rounded-full text-lg sm:text-xl hover:bg-[#0058DD] hover:text-white transition-all duration-300">
+                      Book Now
                     </button>
+                    </Link>
+                    
                   </div>
                 </div>
               </div>
