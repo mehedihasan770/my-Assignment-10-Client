@@ -41,10 +41,34 @@ const Signin = () => {
         })
     }
 
+    const fillDemoCredentials = (userType) => {
+        const form = document.querySelector('form');
+        if (form) {
+            if (userType === 'user') {
+                form.email.value = 'user@demo.com';
+                form.pass.value = 'Demouser123@';
+            }
+        }
+    }
+
     return (
         <div className='min-h-[calc(100vh-64px)] flex justify-center items-center'>
             <form onSubmit={handleEPSignin}>
                 <h1 className="md:text-4xl text-center mb-5 text-[20px] font-bold text-[#F3601A]">Login now!</h1>
+                
+                <div className="mb-4 space-y-2">
+                    <p className="text-center text-sm text-gray-500 mb-2">Demo Login Credentials:</p>
+                    <div className="flex gap-2 justify-center">
+                        <button 
+                            type="button" 
+                            onClick={() => fillDemoCredentials('user')}
+                            className="px-3 py-2 cursor-pointer text-sm bg-[#0058DD] text-white rounded-lg hover:bg-[#0058DD]/90 transition-colors"
+                        >
+                            Demo User
+                        </button>
+                    </div>
+                </div>
+
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-90 border p-4">
 
                     <label className="label">Email</label>
@@ -53,7 +77,9 @@ const Signin = () => {
                     <label className="label">Password</label>
                     <div className='relative'>
                         <input type={show ? "password" : "text"} className="input" required name='pass' placeholder="Password" />
-                        <p className="absolute bottom-2.5 right-4" onClick={() => setShow(!show)}>{show ? <FaEyeLowVision size={21}/> : <FaEye size={20}/>}</p>
+                        <p className="absolute bottom-2.5 right-4 cursor-pointer" onClick={() => setShow(!show)}>
+                            {show ? <FaEyeLowVision size={21}/> : <FaEye size={20}/>}
+                        </p>
                     </div>
                     
 
@@ -65,7 +91,9 @@ const Signin = () => {
                         <span className="px-3 text-gray-500 text-sm">or</span>
                         <hr className="grow border-t border-gray-300" />
                     </div>
-                    <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10"><FcGoogle size={25} />Login with Email</button>
+                    <button type='button' onClick={handleGSignin} className="btn md:text-[16px] border-2 border-[#F3601A] h-8 md:h-10">
+                        <FcGoogle size={25} />Login with Email
+                    </button>
                     <h2 className="font-semibold pt-3">
                         Dont't Have An Account ?{" "}
                         <Link className="text-secondary" to={"/sign_up"}>Signup</Link>
