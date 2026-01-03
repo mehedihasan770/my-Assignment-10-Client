@@ -115,8 +115,6 @@ const DashboardHome = () => {
                 <h1 className="text-3xl font-bold text-[#F3601A]">Dashboard Overview</h1>
                 <p className="text-gray-500 mt-2">Welcome back, {user?.displayName || user?.email}</p>
             </div>
-
-            {/* Overview Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {overviewData.map((card, i) => (
                     <div 

@@ -106,8 +106,6 @@ const Services = () => {
                 return sortedData.sort((a, b) => a.service_Price - b.service_Price)
             case "price-high":
                 return sortedData.sort((a, b) => b.service_Price - a.service_Price)
-            case "rating":
-                return sortedData.sort((a, b) => b.avaregRating - a.avaregRating)
             case "name-asc":
                 return sortedData.sort((a, b) => a.service_name.localeCompare(b.service_name))
             case "name-desc":
@@ -152,7 +150,13 @@ const Services = () => {
     }
 
     return (
-        <div className='py-20'>
+        <div className='pt-5 pb-10'>
+            <h2 className="text-4xl font-bold text-center">
+                <span className="text-[#F3601A] text-center">All</span> Services
+            </h2>
+            <p className="text-gray-600 mb-6 text-lg text-center">
+                satisfied homeowners who trust our professional services
+            </p>
             <div className="mb-6">
                 <input
                     type="text"
@@ -201,7 +205,6 @@ const Services = () => {
                         <option value="default">Default</option>
                         <option value="price-low">Price: Low to High</option>
                         <option value="price-high">Price: High to Low</option>
-                        <option value="rating">Highest Rating</option>
                         <option value="name-asc">Name: A to Z</option>
                         <option value="name-desc">Name: Z to A</option>
                     </select>
@@ -262,10 +265,6 @@ const Services = () => {
                             <img src={ser.service_imageURL} alt="ser.service_imageURL" className="w-full rounded-2xl h-60 overflow-hidden object-cover hover:scale-105 transition-transform duration-400"/>
                             <div className='flex space-x-1 absolute top-3 left-3'>
                                 <span className="text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md">${ser.service_Price}</span>
-                                <div className='flex space-x-1 items-center text-white bg-blue-500 text-sm font-semibold px-3 py-1 rounded-full shadow-md'>
-                                    <FcRating size={20}/>
-                                    <span className="">{ser?.avaregRating?.toFixed(2)}</span>
-                                </div>
                             </div>
                         </div>
                         <div className="p-5">

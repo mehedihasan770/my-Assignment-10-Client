@@ -40,9 +40,12 @@ const Home = () => {
             </header>
             <main>
                 <div className='py-15'>
-                    <h2 className="text-4xl font-bold mb-6 text-center">
-                <span className="text-[#F3601A] text-center">Top (4)</span>Services
+                    <h2 className="text-4xl font-bold text-center">
+                <span className="text-[#F3601A] text-center">Top (4)</span> Services
             </h2>
+            <p className="text-gray-600 mb-6 text-lg text-center">
+                satisfied homeowners who trust our professional services
+            </p>
                     <div className='grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                 {loading1 ? 
                 
@@ -105,6 +108,9 @@ const Home = () => {
 </div>
                 )}
             </div>
+                <div className='flex justify-center'>
+                    <Link to={'/services'}><button className='btn mt-5 bg-[#F3601A] text-white py-3 px-10 rounded-2xl'>All Services</button></Link>
+                </div>
                 </div>
                 <div>
                     <Marqu></Marqu>
