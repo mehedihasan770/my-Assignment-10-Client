@@ -58,9 +58,19 @@ const AddService = () => {
                             <input type="text" className="input w-full" name='service_name' required placeholder="Service Name" />
                         </div>
                         <div className='w-full'>
-                            <label className="label mb-1">Service Category</label>
-                            <input type="text" className="input w-full" name='service_category' required placeholder="Service Category" />
-                        </div>
+                        <label className="label mb-1">Service Category</label>
+                        <select className="input w-full" name='service_category' required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Home Repair">Home Repair</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Painting">Painting</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Gardening">Gardening</option>
+                            <option value="Moving">Moving</option>
+                        </select>
+                    </div>
                     </div>
     
                     <label className="label">Service Price</label>

@@ -140,9 +140,9 @@ const Details = () => {
                 
                 <button 
                     onClick={() => setActiveImage(prev => prev === 0 ? 1 : 0)}
-                    className='absolute top-1/2 cursor-pointer right-4 z-20 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-110'
+                    className='absolute border border-[#F3601A] top-1/2 cursor-pointer right-4 z-20 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-110'
                 >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-[#F3601A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
