@@ -14,6 +14,7 @@ import PageNotFound from "../pages/ErrorPage/PageNotFound";
 import About from "../pages/About/About";
 import TermsPrivacy from "../pages/TermsPrivacy/TermsPrivacy";
 import Dashboard from "../layouts/Dashboard";
+import DashboardHome from "../pages/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
     {
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'home',
-                element: <h1>hallo</h1>
+                element: <DashboardHome></DashboardHome>
             },
             {
                 path: "my_services",

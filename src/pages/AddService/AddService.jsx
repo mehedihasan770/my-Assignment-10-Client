@@ -3,6 +3,7 @@ import { AuthContext } from '../../authContext/AuthContext';
 import Swal from 'sweetalert2';
 import { useLoading } from '../../Hooks/useLoading';
 import Loading from '../../components/Loading/Loading';
+import AddServicesSkeleton from '../../components/Dashboard/AddServicesSkeleton';
 
 const AddService = () => {
     const {user} = useContext(AuthContext)
@@ -42,7 +43,7 @@ const AddService = () => {
     }
 
     if(loading1){
-        return <Loading></Loading>
+        return <AddServicesSkeleton></AddServicesSkeleton>
     }
 
     return (

@@ -5,6 +5,7 @@ import { FaStreetView } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import Loading from '../../components/Loading/Loading';
 import { useLoading } from '../../Hooks/useLoading';
+import MyServicesSkeleton from '../../components/Dashboard/MyServicesSkeleton';
 
 const MyBookings = () => {
     const {user} = useContext(AuthContext)
@@ -85,7 +86,7 @@ const MyBookings = () => {
     }
 
     if(loading1){
-        return <Loading></Loading>
+        return <MyServicesSkeleton></MyServicesSkeleton>
     }
 
     return (
