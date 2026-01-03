@@ -50,47 +50,185 @@ const Details = () => {
         modalRef.current.close()
     }
 
-    if(loading1){
-        return <Loading></Loading>
-    }
-
     return (
-        <div className='mt-5'>
-            <div className='flex lg:flex-row rounded-2xl p-5 space-x-4 flex-col shadow-sm'>
-                <div className='flex-1'>
-                    <img src={details?.service_imageURL} alt="" className='w-2xl md:h-[600px] border border-gray-400 rounded-2xl' />
-                </div>
-                <div className='flex-1'>
-                    <h1 className='text-2xl font-bold border border-[#0058DD] w-fit px-2 py-1 rounded-2xl mt-2'>{details?.service_name}</h1>
-                    <div className='border-t mt-3 mb-3 border-gray-400'></div>
-                    <h1 className='bg-[#0058DD] w-fit py-1 px-2.5 text-white font-bold rounded-md'>price ${details?.service_Price}</h1>
-                    <h1 className='font-semibold text-gray-600'>{details?.service_category}</h1>
-                    <h1 className='font-semibold text-gray-600'>{details?.provider_name}</h1>
-                    <h1 className='font-semibold text-gray-600'>{details?.contact_email}</h1>
-                    <div className='border-t mt-3 mb-3 border-gray-400'></div>
-                    <p className='font-semibold'>description</p>
-                    <p className='text-gray-400'>{details?.service_description}</p>
-                    <div className='border-t mt-3 mb-3 border-gray-400'></div>
-                    { user?.email === details?.provider_email ? <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD] btn-disabled'>Book now</button> : <button onClick={() => modalRef.current.showModal()} className='btn border-2 md:text-[16px] border-[#0058DD] text-[#0058DD] font-bold hover:text-white hover:bg-[#0058DD]'>Book now</button>}
+        <div className='py-20'>
+            {loading1 ? (
+                <div className='bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 shadow-xl dark:shadow-gray-900 border border-gray-200 dark:border-gray-700 animate-pulse'>
+    <div className='flex flex-col lg:flex-row gap-8'>
+        <div className='lg:w-1/2'>
+            <div className='w-full h-[400px] md:h-[500px] bg-gray-300 dark:bg-gray-700 rounded-2xl'></div>
+        </div>
+        
+        <div className='lg:w-1/2 space-y-6'>
+            <div className='space-y-4'>
+                <div className='h-8 bg-gray-300 dark:bg-gray-700 rounded-xl w-3/4'></div>
+                
+                <div className='flex items-center gap-4 flex-wrap'>
+                    <div className='h-10 bg-gray-300 dark:bg-gray-700 rounded-xl w-24'></div>
+                    <div className='h-10 bg-gray-300 dark:bg-gray-700 rounded-xl w-32'></div>
                 </div>
             </div>
-            <div className='border-t mt-10 border-gray-400'></div>
-             <h1 className='text-center text-2xl font-bold mb-5 mt-5 text-[#F3601A]'>All Rating</h1>
-             {details?.reviews?.length <=0 ? <h1 className='md:text-4xl text-center font-bold text-gray-400 mt-10'>No Rating</h1> : ""}
-            <div className='grid md:grid-cols-2 grid-cols-1 gap-5'>
-                {
-                    details?.reviews?.map((review, index) => 
-                        <div key={index} className='border border-[#F3601A] rounded-md shadow-lg p-5'>
-                            <div className='flex items-center space-x-1 mb-2'>
-                                <FcRating size={25}/>
-                                <h1 className='font-bold'>{review.rating}</h1>
+
+            <div className='space-y-4 py-4 border-y border-gray-200 dark:border-gray-700'>
+                <div className='flex items-center gap-3'>
+                    <div className='w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full'></div>
+                    <div className='space-y-2'>
+                        <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded w-32'></div>
+                        <div className='h-3 bg-gray-300 dark:bg-gray-700 rounded w-40'></div>
+                    </div>
+                </div>
+            </div>
+
+            <div className='space-y-3'>
+                <div className='h-6 bg-gray-300 dark:bg-gray-700 rounded w-32'></div>
+                <div className='space-y-2'>
+                    <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded'></div>
+                    <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6'></div>
+                    <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded w-4/6'></div>
+                </div>
+            </div>
+
+            <div className='h-12 bg-gray-300 dark:bg-gray-700 rounded-xl'></div>
+        </div>
+    </div>
+
+    <div className='mt-12 pt-8 border-t border-gray-200 dark:border-gray-700'>
+        <div className='text-center mb-10 space-y-2'>
+            <div className='h-8 bg-gray-300 dark:bg-gray-700 rounded-xl w-48 mx-auto'></div>
+            <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded w-32 mx-auto'></div>
+        </div>
+
+        <div className='grid md:grid-cols-2 gap-6'>
+            {[...Array(2)].map((_, i) => (
+                <div 
+                    key={i} 
+                    className='bg-gray-100 dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700'
+                >
+                    <div className='flex items-center justify-between mb-4'>
+                        <div className='flex items-center gap-3'>
+                            <div className='w-12 h-12 bg-gray-300 dark:bg-gray-700 rounded-full'></div>
+                            <div className='space-y-2'>
+                                <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded w-24'></div>
+                                <div className='h-3 bg-gray-300 dark:bg-gray-700 rounded w-16'></div>
                             </div>
-                            <h1 className='font-semibold mb-1 text-gray-600'>{review.email}</h1>
-                            <h1 className='text-gray-500'>{review.comment}</h1>
                         </div>
-                    )
-                }
+                    </div>
+                    <div className='space-y-2 pl-2'>
+                        <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded'></div>
+                        <div className='h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6'></div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</div>) : 
+            (<div className='bg-white/10 dark:bg-gray-800 rounded-3xl p-6 md:p-8 shadow'>
+    <div className='flex flex-col lg:flex-row gap-8'>
+        <div className='lg:w-1/2'>
+            <img 
+                src={details?.service_imageURL} 
+                alt={details?.service_name}
+                className='w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow'
+            />
+        </div>
+        
+        <div className='lg:w-1/2 space-y-6'>
+            <div className='space-y-4'>
+                <h1 className='text-3xl font-bold text-[#F3601A]'>
+                    {details?.service_name}
+                </h1>
+                
+                <div className='flex items-center gap-4 flex-wrap'>
+                    <span className='bg-[#0058DD] text-white font-bold py-2 px-4 rounded-xl shadow-md'>
+                        ${details?.service_Price}
+                    </span>
+                    <span className='bg-[#F3601A]/10 text-[#F3601A] font-semibold py-2 px-4 rounded-xl'>
+                        {details?.service_category}
+                    </span>
+                </div>
             </div>
+
+            <div className='space-y-4 py-4 border-y border-gray-200 dark:border-gray-700'>
+                <div className='flex items-center gap-3'>
+                    <div className='w-10 h-10 bg-[#0058DD]/20 rounded-full flex items-center justify-center'>
+                        <span className='text-[#0058DD] font-bold'>{details?.provider_name?.charAt(0)}</span>
+                    </div>
+                    <div>
+                        <h3 className='font-bold text-[#0058DD]'>{details?.provider_name}</h3>
+                        <p className='text-sm text-gray-500'>{details?.contact_email}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className='space-y-3'>
+                <h3 className='text-xl font-bold flex items-center gap-2'>
+                    <span className='w-2 h-6 bg-[#F3601A] rounded-full'></span>
+                    Description
+                </h3>
+                <p className='text-gray-500 leading-relaxed shadow dark:bg-gray-900 p-4 rounded-xl'>
+                    {details?.service_description}
+                </p>
+            </div>
+
+            <button 
+                onClick={() => modalRef.current.showModal()}
+                disabled={user?.email === details?.provider_email}
+                className={`w-full py-3 cursor-pointer rounded-xl font-bold transition-all duration-300 ${user?.email === details?.provider_email 
+                    ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed' 
+                    : 'bg-[#F3601A] text-white hover:shadow-lg hover:scale-[1.02]'
+                }`}
+            >
+                {user?.email === details?.provider_email ? 'Unavailable' : 'Book Now'}
+            </button>
+        </div>
+    </div>
+
+    <div className='mt-12 pt-8 border-t border-gray-200 dark:border-gray-700'>
+        <div className='text-center mb-10'>
+            <h2 className='text-2xl md:text-3xl font-bold text-[#F3601A] inline-block'>
+                Customer Reviews
+            </h2>
+            <p className='text-gray-500 dark:text-gray-400 mt-2'>What people are saying</p>
+        </div>
+
+        {details?.reviews?.length <= 0 ? (
+            <div className='text-center py-12'>
+                <div className='w-20 h-20 mx-auto bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center mb-4'>
+                    <span className='text-3xl'>🌟</span>
+                </div>
+                <h3 className='text-xl font-bold text-gray-400 dark:text-gray-500'>No Reviews Yet</h3>
+                <p className='text-gray-500 dark:text-gray-600'>Be the first to share your experience!</p>
+            </div>
+        ) : (
+            <div className='grid md:grid-cols-2 gap-6'>
+                {details?.reviews?.map((review, i) => (
+                    <div 
+                        key={i} 
+                        className=' rounded-2xl p-6 shadow hover:shadow-xl transition-shadow duration-300'
+                    >
+                        <div className='flex items-center justify-between mb-4'>
+                            <div className='flex items-center gap-3'>
+                                <div className='w-12 h-12 bg-linear-to-r from-[#0058DD]/20 to-[#F3601A]/20 rounded-full flex items-center justify-center'>
+                                    <span className='font-bold text-[#0058DD]'>{review.email?.charAt(0).toUpperCase()}</span>
+                                </div>
+                                <div>
+                                    <h4 className='font-bold text-[#0058DD]'>{review.email}</h4>
+                                    <div className='flex items-center gap-1'>
+                                        <FcRating size={20}/>
+                                        <span className='font-bold text-[#F3601A] ml-1'>{review.rating}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p className='text-gray-500 italic pl-2 border-l-4 border-[#0058DD]'>
+                            "{review.comment}"
+                        </p>
+                    </div>
+                ))}
+            </div>
+        )}
+    </div>
+</div>)}
             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <form onSubmit={handleBook}>
