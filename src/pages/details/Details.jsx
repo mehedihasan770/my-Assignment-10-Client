@@ -8,6 +8,7 @@ import { useLoading } from '../../Hooks/useLoading';
 
 const Details = () => {
     const {user} = useContext(AuthContext)
+    const [activeImage, setActiveImage] = useState(0);
     const {id} = useParams()
     const [details, setDetails] = useState({})
     const modalRef = useRef()
@@ -125,11 +126,38 @@ const Details = () => {
             (<div className='bg-white/10 dark:bg-gray-800 rounded-3xl p-6 md:p-8 shadow'>
     <div className='flex flex-col lg:flex-row gap-8'>
         <div className='lg:w-1/2'>
-            <img 
-                src={details?.service_imageURL} 
-                alt={details?.service_name}
-                className='w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow'
-            />
+            <div className='relative w-full h-[400px] md:h-[500px] rounded-2xl shadow overflow-hidden group'>
+                <img 
+                    src={details?.service_imageURL} 
+                    alt={details?.service_name}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${activeImage === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                />
+                <img 
+                    src={details?.service_imageURL2} 
+                    alt={`${details?.service_name} - view 2`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${activeImage === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                />
+                
+                <button 
+                    onClick={() => setActiveImage(prev => prev === 0 ? 1 : 0)}
+                    className='absolute top-1/2 cursor-pointer right-4 z-20 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-110'
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                
+                <div className='absolute bottom-4 left-1/2 z-20 -translate-x-1/2 flex gap-2'>
+                    <button 
+                        onClick={() => setActiveImage(0)}
+                        className={`w-3 h-3 rounded-full transition-all ${activeImage === 0 ? 'bg-[#F3601A] scale-125' : 'bg-white/60 hover:bg-white/80'}`}
+                    />
+                    <button 
+                        onClick={() => setActiveImage(1)}
+                        className={`w-3 h-3 rounded-full transition-all ${activeImage === 1 ? 'bg-[#F3601A] scale-125' : 'bg-white/60 hover:bg-white/80'}`}
+                    />
+                </div>
+            </div>
         </div>
         
         <div className='lg:w-1/2 space-y-6'>
@@ -172,13 +200,13 @@ const Details = () => {
 
             <button 
                 onClick={() => modalRef.current.showModal()}
-                disabled={user?.email === details?.provider_email}
-                className={`w-full py-3 cursor-pointer rounded-xl font-bold transition-all duration-300 ${user?.email === details?.provider_email 
-                    ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed' 
+                disabled={!user?.email || user?.email === details?.provider_email}
+                className={`w-full py-3 rounded-xl cursor-pointer font-bold transition-all duration-300 ${!user?.email || user?.email === details?.provider_email 
+                    ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed'
                     : 'bg-[#F3601A] text-white hover:shadow-lg hover:scale-[1.02]'
                 }`}
             >
-                {user?.email === details?.provider_email ? 'Unavailable' : 'Book Now'}
+                {!user?.email || user?.email === details?.provider_email ? 'Book Unavailable' : 'Book Now'}
             </button>
         </div>
     </div>
@@ -204,7 +232,7 @@ const Details = () => {
                 {details?.reviews?.map((review, i) => (
                     <div 
                         key={i} 
-                        className=' rounded-2xl p-6 shadow hover:shadow-xl transition-shadow duration-300'
+                        className='rounded-2xl p-6 shadow hover:shadow-xl transition-shadow duration-300'
                     >
                         <div className='flex items-center justify-between mb-4'>
                             <div className='flex items-center gap-3'>

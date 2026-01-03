@@ -14,12 +14,13 @@ const AddService = () => {
         const service_category = e.target.service_category.value;
         const service_Price = parseInt(e.target.service_Price.value);
         const service_imageURL = e.target.service_imageURL.value;
+        const service_imageURL2 = e.target.service_imageURL2.value;
         const provider_name = e.target.provider_name.value;
         const provider_email = user?.email;
         const reviews = [];
         const contact_email = e.target.contact_email.value;
         const service_description = e.target.description.value;
-        const newService = {service_name, reviews, service_category, service_Price, service_imageURL, provider_name, contact_email, provider_email, service_description}
+        const newService = {service_name, reviews, service_category, service_Price, service_imageURL, service_imageURL2, provider_name, contact_email, provider_email, service_description}
         fetch('https://home-hero-server-ten.vercel.app/services', {
             method: 'POST',
             headers: {
@@ -66,7 +67,10 @@ const AddService = () => {
                     <input type="number" className="input w-full" name='service_Price' required placeholder="Service Price" />
 
                     <label className="label">Service ImageURL</label>
-                    <input type="text" className="input w-full" name='service_imageURL' required placeholder="Service ImageURL" />
+                    <input type="text" className="input w-full" name='service_imageURL' required placeholder="Service ImageURL 1" />
+
+                    <label className="label">Service ImageURL</label>
+                    <input type="text" className="input w-full" name='service_imageURL2' required placeholder="Service ImageURL 2" />
 
                     <label className="label">Provider Name</label>
                     <input type="text" className="input w-full" defaultValue={user?.displayName} name='provider_name' required placeholder="Provider Name" />

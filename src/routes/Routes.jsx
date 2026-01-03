@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'details/:id',
-                element: <PrivetRouts><Details></Details></PrivetRouts>
+                element: <Details></Details>
             },
             {
                 path: 'sign_in',
